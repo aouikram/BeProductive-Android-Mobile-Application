@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "598190161791",
+    "project_id": "beproductive-19ee9",
+    "storage_bucket": "beproductive-19ee9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598190161791:android:645d23b48a58e7d693a44a",
+        "android_client_info": {
+          "package_name": "com.example.main"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598190161791-9j7v4g7ev5sbth9ob1nbguiqva2vdgmj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAU3SkpSvo_oYgcf6VJo3VjQa9hHhgd9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598190161791-9j7v4g7ev5sbth9ob1nbguiqva2vdgmj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

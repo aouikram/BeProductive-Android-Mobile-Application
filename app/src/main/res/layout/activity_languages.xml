@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".languages">
+ <TextView
+     android:textSize="22sp"
+     android:gravity="center"
+     android:layout_marginTop="30dp"
+     android:layout_marginBottom="30dp"
+     android:textColor="#4a4a4a"
+     android:text="Select a Language"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="80dp"
+        android:padding="12dp"
+        android:background="@drawable/bg_item">
+
+        <ImageView
+            android:layout_width="97dp"
+            android:layout_height="60dp"
+            android:src="@drawable/cropped_image" />
+              <LinearLayout
+                  android:layout_marginTop="8dp"
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical" >
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Learn Spanish"
+                      android:textColor="#4a4a4a"
+                      android:textSize="18sp" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="text text "
+                      android:textColor="#bebebe"
+                      android:textSize="14sp" />
+
+
+              </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="80dp"
+        android:padding="12dp"
+        android:background="@drawable/bg_item">
+
+        <ImageView
+            android:layout_width="97dp"
+            android:layout_height="60dp"
+            android:src="@drawable/cropped_image" />
+        <LinearLayout
+            android:layout_marginTop="8dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Learn English"
+                android:textColor="#4a4a4a"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="text text "
+                android:textColor="#bebebe"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="80dp"
+        android:padding="12dp"
+        android:background="@drawable/bg_item">
+
+        <ImageView
+            android:layout_width="97dp"
+            android:layout_height="60dp"
+            android:src="@drawable/cropped_image" />
+        <LinearLayout
+            android:layout_marginTop="8dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Learn Arabic"
+                android:textColor="#4a4a4a"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="text text "
+                android:textColor="#bebebe"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="80dp"
+        android:padding="12dp"
+        android:background="@drawable/bg_item">
+
+        <ImageView
+            android:layout_width="97dp"
+            android:layout_height="60dp"
+            android:src="@drawable/cropped_image" />
+        <LinearLayout
+            android:layout_marginTop="8dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Learn German"
+                android:textColor="#4a4a4a"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="text text "
+                android:textColor="#bebebe"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:text="continue"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/teal_200"
+        android:height="75dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:height="75dp"
+        android:text="cancel"
+
+        android:textColor="@color/black"
+        app:backgroundTint="@android:color/transparent" />
+
+</LinearLayout>

@@ -11,8 +11,11 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class JourneyFragment extends Fragment {
     private Button setGoal;
+    private FirebaseAuth mAuth;
 
     @Nullable
     @Override
@@ -32,4 +35,10 @@ public void send(){
     Intent intent = new Intent(getActivity(), ChooseGoal.class);
     startActivity(intent);
 }
+public void logoutUser(View view) {
+        mAuth.signOut();
+        Intent intent = new Intent(getActivity(), LogSignUp.class);
+        startActivity(intent);
+        return;
+    }
 }

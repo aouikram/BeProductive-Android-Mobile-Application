@@ -39,19 +39,19 @@ public class ChooseGoal extends AppCompatActivity implements View.OnClickListene
       Intent i ;
       switch(v.getId()) {
           case R.id.skill_card :
-              usersDb.child("AllUsers").child(currentUId).child("Goals").setValue(true);
+              usersDb.child("AllUsers").child(currentUId).child("Goals").setValue("skill");
               usersDb.child("SkillTable").child(currentUId).setValue(true);
               i= new Intent(this, skills.class);
               startActivity(i);
               break;
           case R.id.language_card :
-              usersDb.child("AllUsers").child(currentUId).child("Goals").setValue(true);
+              usersDb.child("AllUsers").child(currentUId).child("Goals").setValue("language");
               usersDb.child("LanguageTable").child(currentUId).setValue(true);
               i= new Intent(this, languages.class);
               startActivity(i);
               break;
           case R.id.health_card :
-              usersDb.child("AllUsers").child(currentUId).child("Goals").setValue(true);
+              usersDb.child("AllUsers").child(currentUId).child("Goals").setValue("health");
               usersDb.child("HealthTable").child(currentUId).setValue(true);
               i= new Intent(this, Health.class);
               startActivity(i);break;

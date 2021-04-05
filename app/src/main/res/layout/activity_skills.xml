@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".skills">
+    android:gravity="center"
+   >
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="choose skill"
+    android:id="@+id/choices_of_skills"
+    android:textColor="@color/black"
+    android:textSize="30sp"
+    android:textAlignment="center"
+    android:gravity="center_horizontal" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Spinner
+        android:layout_marginTop="30dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/spinner" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="match me"
+        android:layout_margin="10dp"
+        android:layout_marginTop="100dp"
+        android:id="@+id/button_matcheMe"
+        />
+
+</LinearLayout>

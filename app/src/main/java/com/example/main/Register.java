@@ -27,8 +27,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.hbb20.CountryCodePicker;
 
 import java.util.Calendar;
@@ -68,13 +71,28 @@ public class Register extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null) {
-                    Intent intent = new Intent(Register.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return;
+                    DatabaseReference userDb = FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid());
+                    userDb.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()){
+                                if (dataSnapshot.hasChild("Goals")){
+                                    Intent intent = new Intent(Register.this, ChooseGoal.class);
+                                    startActivity(intent);
+                                    finish();
+                                    return;
+                                }
+                                else
+                                {  Intent intent = new Intent(Register.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                    return;}
+                                    }
+                                }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) { } });
                 }
-            }
-        };
+        }};
         ccp = (CountryCodePicker) findViewById(R.id.ccp);
         editTextCarrierNumber = (EditText) findViewById(R.id.editText_carrierNumber);
         ccp.registerCarrierNumberEditText(editTextCarrierNumber);
@@ -183,7 +201,7 @@ public class Register extends AppCompatActivity {
                             userInfo.put("sex", radioButton.getText().toString());
                             userInfo.put("profileImageUrl", "default");
                             currentUserDb.updateChildren(userInfo);
-                            Intent intent = new Intent(Register.this, MainActivity.class);
+                            Intent intent = new Intent(Register.this, ChooseGoal.class);
                             startActivity(intent);
                             finish();
                             return;

@@ -1,8 +1,10 @@
 package com.example.main;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.main.users.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,47 +39,21 @@ public class Match extends AppCompatActivity {
 
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
+        Log.v("TAG", "Authentification sucess");
         currentUId = mAuth.getCurrentUser().getUid();
         UsersList = new ArrayList<>();
-        // check what goals does the user have
-        checkUserGoal(); // checks Goal TYPE then Adds users with same goal type tp the list
-        // choose random users from the list
-        List<String> randomList = getRandomUsers(UsersList);
-        //changing the users Group attribute to true for the selected users
-        setGroupTrue(randomList,userGoal);
-        // create a GroupTable that will contain all the groups , each group's id is a child , and the users in the group are children of the group
-        // they belong to
-        String GroupId =randomList.get(1); // group Id is same as the first user in tha group
-        usersDb.child("GroupTable").child(GroupId);
-          for(int i=0 ; i<randomList.size(); i++)
-          {    // insert users
-              usersDb.child("GroupTable").child(GroupId).child("user"+i).setValue(randomList.get(i));
-          }
+        Log.v("TAG", "hello function");
+        checkUserGoal();
+        Log.v("TAG", "function ended ");
         }
 
-    private void setGroupTrue(List<String> randomList, String userGoal) {
-         String Goal;
-        switch (userGoal){
-            case "skill":
-                Goal="SkillTable";
-                break;
-            case "health":
-                Goal="HealthTable";
-                break;
-            case "language":
-                Goal="LanguageTable";
-                break;
-            default:
-                Goal="LanguageTable";
-                break;
-        }
-        DatabaseReference GoalsDb = FirebaseDatabase.getInstance().getReference().child("Users").child(Goal);
-        GoalDb.child("group").addChildEventListener(new ChildEventListener() {
+    private void setGroupTrue(List<String> randomList, DatabaseReference GoalDb) {
+        GoalDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if (dataSnapshot.child("group").getValue() != null) {
                     if (dataSnapshot.exists() && dataSnapshot.child("group").getValue().toString().equals("false")&& randomList.contains(dataSnapshot.getKey())) {
-                       GoalsDb.child(dataSnapshot.getKey()).child("group").setValue("true");
+                       GoalDb.child(dataSnapshot.getKey()).child("group").setValue("true");
                     }
                 }
             }
@@ -94,10 +70,21 @@ public class Match extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+        Log.v("TAG", "group attribute set to true ");
+        String GroupId =randomList.get(0); // group Id is same as the first user in tha group
+        Log.v("TAG", GroupId);
+        FirebaseDatabase.getInstance().getReference().child("Users").child("GroupTable").child(GroupId);
+        Log.v("TAG", "Table created");
+        for(int i=0 ; i<randomList.size(); i++)
+        {    // insert users
+            Log.v("TAG", "hi");
+            usersDb.child("GroupTable").child(GroupId).child("user"+i).setValue(randomList.get(i));
+        }
+
  }
     public List<String> getRandomUsers(List<String> UsersList) {
         int size = UsersList.size();
-        if (size<=10) { return UsersList ; }
+        if (size<=10) { Log.v("TAG", "random list created"); return UsersList ; }
         else if(size>=10){ 
             groupSize=size/4;
             Random rand = new Random();
@@ -109,8 +96,10 @@ public class Match extends AppCompatActivity {
                 int randomIndex = rand.nextInt(UsersList.size());
                 newList.add(UsersList.get(randomIndex));
             }
+            Log.v("TAG", "random list created");
             return newList;
         }
+        Log.v("TAG", "random list not created");
         return UsersList;
     }
     public void checkUserGoal(){
@@ -122,8 +111,9 @@ public class Match extends AppCompatActivity {
                 if (dataSnapshot.exists()){
                     if (dataSnapshot.child("Goals").getValue() != null){
                         userGoal = dataSnapshot.child("Goals").getValue().toString();
-                        checkUserGoalType(userGoal);
-                    }
+                        Log.v("TAG", userGoal);
+
+                    } checkUserGoalType(userGoal);
                 }
             }
             @Override
@@ -132,33 +122,34 @@ public class Match extends AppCompatActivity {
         });
     }
     public void checkUserGoalType(String userGoal){
-        String Goal ;
+        String GoalTable ;
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         switch (userGoal){
             case "skill":
-                Goal="SkillTable";
+                GoalTable="SkillTable";
                 break;
             case "health":
-                Goal="HealthTable";
+                GoalTable="HealthTable";
                 break;
             case "language":
-                Goal="LanguageTable";
+                GoalTable="LanguageTable";
                 break;
             default:
-                Goal="LanguageTable";
+                GoalTable="LanguageTable";
                 break;
         }
-        GoalDb = FirebaseDatabase.getInstance().getReference().child("Users").child(Goal);
-        DatabaseReference userDb = GoalDb.child(user.getUid());
+        GoalDb = FirebaseDatabase.getInstance().getReference().child("Users").child(GoalTable);
+        DatabaseReference userDb2 = FirebaseDatabase.getInstance().getReference().child("Users").child(GoalTable).child(user.getUid());
 
-        userDb.addListenerForSingleValueEvent(new ValueEventListener() {
+        userDb2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     if (dataSnapshot.child("Type").getValue() != null){
                         userGoalType = dataSnapshot.child("Type").getValue().toString();
-                        getSameGoalUsers(GoalDb , UsersList);
-                    }
+                        Log.v("TAG", userGoalType);
+
+                    } getSameGoalUsers(GoalDb , UsersList , userGoalType);
                 }
             }
             @Override
@@ -166,16 +157,40 @@ public class Match extends AppCompatActivity {
             }
         });
     }
-    private void getSameGoalUsers(DatabaseReference GoalDb , List<String> UsersList) {
-            GoalDb.addChildEventListener(new ChildEventListener() {
+    private void getSameGoalUsers(DatabaseReference GoalDb, List<String> UsersList, String userGoalType) {
+        GoalDb.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                {
+                    if (snapshot.child("Type").getValue() != null) {
+                        if (snapshot.exists() && snapshot.child("Type").getValue().toString().equals(userGoalType) && snapshot.child("group").getValue().toString().equals("false")) {
+                            String UID = snapshot.getKey();
+                            UsersList.add(UID);
+                            Log.v("TAG", "user added in list");
+                        }
+                }
+            } Log.v("TAG", "list created");
+                setGroupTrue(getRandomUsers(UsersList),GoalDb); }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+     /*       GoalDb.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    if (dataSnapshot.child("type").getValue() != null) {
-                        if (dataSnapshot.exists() && dataSnapshot.child("type").getValue().toString().equals(userGoalType) && dataSnapshot.child("group").getValue().toString().equals("false")) {
+                    if (dataSnapshot.child("Type").getValue() != null) {
+                        if (dataSnapshot.exists() && dataSnapshot.child("Type").getValue().toString().equals(userGoalType) && dataSnapshot.child("group").getValue().toString().equals("false")) {
                             String UID = dataSnapshot.getKey();
                             UsersList.add(UID);
-                        }
+
+                        }Log.v("TAG", "user added in list");
+
                     }
+                    Log.v("TAG", "list created");
+                    setGroupTrue(getRandomUsers(UsersList),GoalDb);
                 }
                 @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -189,7 +204,7 @@ public class Match extends AppCompatActivity {
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                 }
-            });
+            });*/
         }
 
     }

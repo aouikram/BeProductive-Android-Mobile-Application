@@ -16,10 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Main">
-        <activity android:name=".Match"></activity>
-        <activity android:name=".Health" />
-        <activity android:name=".languages" />
-        <activity android:name=".skills" />
+        <activity android:name=".Skills"></activity>
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +29,9 @@
         <activity android:name=".login" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ChooseGoal" />
+        <activity android:name=".Health" />
+        <activity android:name=".languages" />
+        <activity android:name=".Match" />
     </application>
 
 </manifest>

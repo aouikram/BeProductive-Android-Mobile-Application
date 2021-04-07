@@ -43,7 +43,7 @@ public class Skills extends AppCompatActivity implements View.OnClickListener {
                 i= new Intent(this,Match.class);
                 startActivity(i);break;
             case R.id.communication_button :
-                usersDb.child("LanguageTable").child(currentUId).child("Type").setValue("communication");
+                usersDb.child("SkillTable").child(currentUId).child("Type").setValue("communication");
                 i= new Intent(this, Match.class);
                 startActivity(i);break;
             default: break ; }

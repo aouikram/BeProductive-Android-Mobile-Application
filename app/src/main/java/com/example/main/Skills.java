@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -26,12 +27,13 @@ public class Skills extends AppCompatActivity implements View.OnClickListener {
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
         currentUId = mAuth.getCurrentUser().getUid();
-
+        Log.v("Tag" , "authetification success ");
         CodingButton = findViewById(R.id.coding_button);
         CommunicationButton =  findViewById(R.id.communication_button);
 
         CodingButton.setOnClickListener(this);
         CommunicationButton.setOnClickListener(this);
+        Log.v("Tag" , "listener for button set");
     }
 
     @Override
@@ -40,6 +42,7 @@ public class Skills extends AppCompatActivity implements View.OnClickListener {
         switch(v.getId()) {
             case R.id.coding_button:
                 usersDb.child("SkillTable").child(currentUId).child("Type").setValue("coding");
+                Log.v("Tag" , "ttrbut coding set");
                 i= new Intent(this,Match.class);
                 startActivity(i);break;
             case R.id.communication_button :

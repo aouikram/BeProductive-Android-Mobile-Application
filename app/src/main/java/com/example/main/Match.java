@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.example.main.users.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -17,7 +15,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -37,6 +34,7 @@ public class Match extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.v("Tag" , "match called ");
         setContentView(R.layout.activity_match);
 
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -180,9 +178,9 @@ public class Match extends AppCompatActivity {
                     if (number < 4 && i==0 ) {
                         GoalDb.child(currentUId).child("group").setValue("true");
                         FirebaseDatabase.getInstance().getReference().child("Users").child("GroupTable").child(userGoalType + "Groups").child(snapshot.getKey()).child("user"+number).setValue(currentUId);
-                        i++;
+                        i++; Log.v("Tag" , "user added to existing group");
                     }
-                }
+                } Log.v("Tag" , "Couldn't find an existing group ");
                 if(i==0)
                        CreatNewGroup(GoalDb, UsersList);
             }
@@ -192,14 +190,13 @@ public class Match extends AppCompatActivity {
             }
         });
     }
-    public void CreatNewGroup(DatabaseReference GoalDb , List<String> UsersList )
-    {
+    public void CreatNewGroup(DatabaseReference GoalDb , List<String> UsersList ) {
         GoalDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
-                    if (snapshot.child("Type").getValue() != null) {
+                    if ((snapshot.child("Type").getValue() != null) && (snapshot.child("group").getValue() != null)) {
                         if (snapshot.exists() && snapshot.child("Type").getValue().toString().equals(userGoalType) && snapshot.child("group").getValue().toString().equals("false")) {
                             String UID = snapshot.getKey();
                             UsersList.add(UID);

@@ -200,6 +200,7 @@ public class Register extends AppCompatActivity {
                             userInfo.put("phone", phone);
                             userInfo.put("sex", radioButton.getText().toString());
                             userInfo.put("profileImageUrl", "default");
+                            userInfo.put("email",email);
                             currentUserDb.updateChildren(userInfo);
                             Intent intent = new Intent(Register.this, ChooseGoal.class);
                             startActivity(intent);

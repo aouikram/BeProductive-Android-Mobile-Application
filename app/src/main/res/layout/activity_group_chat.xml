@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F5FA"
+    tools:context=".GroupChatActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="?actionBarSize"
+        android:layout_width="match_parent"
+        android:background="#019184"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/groupIconIv"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_group_primary_foreground"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/groupTitleTv"
+                android:layout_toEndOf="@+id/groupIconIv"
+                android:text="Group Title"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:id="@+id/ChatLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true">
+        <ImageButton
+            android:id="@+id/attach"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:src="@drawable/ic_group_chatattach_foreground"/>
+        <EditText
+            android:id="@+id/messageEt"
+            android:hint="Start Typing ..."
+            android:inputType="textCapSentences|textMultiLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/sendBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:src="@drawable/ic_group_send" />
+
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRv"
+        app:stackFromEnd="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@id/ChatLayout"
+        tools:listitem="@layout/row_groupchat_left"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
+</RelativeLayout>

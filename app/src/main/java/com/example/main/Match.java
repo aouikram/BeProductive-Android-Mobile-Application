@@ -35,9 +35,10 @@ public class Match extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.v("Tag" , "match called ");
-        setContentView(R.layout.activity_match);
 
+        setContentView(R.layout.activity_match);
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
+        Log.v("TAG", "reference made ");
         mAuth = FirebaseAuth.getInstance();
         Log.v("TAG", "Authentification sucess");
         currentUId = mAuth.getCurrentUser().getUid();
@@ -62,6 +63,7 @@ public class Match extends AppCompatActivity {
                 if (dataSnapshot.child("group").getValue() != null) {
                     if (dataSnapshot.exists() && dataSnapshot.child("group").getValue().toString().equals("false")&& randomList.contains(dataSnapshot.getKey())) {
                        GoalDb.child(dataSnapshot.getKey()).child("group").setValue("true");
+                       Log.v("TAG"," group att set to true ");
                     }
                 }
             }
@@ -78,16 +80,21 @@ public class Match extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-        Log.v("TAG", "group attribute set to true ");
-        String GroupId =randomList.get(0); // group Id is same as the first user in tha group
+
+        Random rand = new Random();
+        String GroupId =randomList.get(0); // group Id is same as the first user in the group
         Log.v("TAG", GroupId);
-        FirebaseDatabase.getInstance().getReference().child("Users").child("GroupTable").child(userGoalType+"Groups").child(GroupId);
+        DatabaseReference groupref= FirebaseDatabase.getInstance().getReference().child("Users").child("GroupTable").child(userGoalType+"Groups");
+         groupref.child(GroupId).child("groupTitle").setValue(userGoalType+" Group");
+         groupref.child(GroupId).child("groupId").setValue(GroupId);
         Log.v("TAG", "Table created");
         for(int i=0 ; i<randomList.size(); i++)
         {    // insert users
             Log.v("TAG", "hi");
-            usersDb.child("GroupTable").child(userGoalType+"Groups").child(GroupId).child("user"+i).setValue(randomList.get(i));
+            usersDb.child("GroupTable").child(userGoalType+"Groups").child(GroupId).child("participants").child(randomList.get(i)).setValue(true);
         }
+            Log.v("TAG", "users added ");
+        sendToMainActivity();
 
  }}
     public List<String> getRandomUsers(List<String> UsersList) {
@@ -174,15 +181,17 @@ public class Match extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int i=0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    long number = snapshot.getChildrenCount();
+                    long number = snapshot.child("participants").getChildrenCount();
                     if (number < 4 && i==0 ) {
                         GoalDb.child(currentUId).child("group").setValue("true");
-                        FirebaseDatabase.getInstance().getReference().child("Users").child("GroupTable").child(userGoalType + "Groups").child(snapshot.getKey()).child("user"+number).setValue(currentUId);
+                        FirebaseDatabase.getInstance().getReference().child("Users").child("GroupTable").child(userGoalType + "Groups").child(snapshot.getKey()).child("participants").child(currentUId).setValue(true);
                         i++; Log.v("Tag" , "user added to existing group");
+                        sendToMainActivity();
                     }
-                } Log.v("Tag" , "Couldn't find an existing group ");
+                }
                 if(i==0)
-                       CreatNewGroup(GoalDb, UsersList);
+                {  Log.v("Tag" , "i=0 creatgroup called");
+                       CreatNewGroup(GoalDb, UsersList); }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -190,13 +199,22 @@ public class Match extends AppCompatActivity {
             }
         });
     }
+
+    private void sendToMainActivity() {
+        Intent i= new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
+
     public void CreatNewGroup(DatabaseReference GoalDb , List<String> UsersList ) {
+        Log.v("TAG", "create group started");
         GoalDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
                     if ((snapshot.child("Type").getValue() != null) && (snapshot.child("group").getValue() != null)) {
+                        Log.v("TAG", "found");
+
                         if (snapshot.exists() && snapshot.child("Type").getValue().toString().equals(userGoalType) && snapshot.child("group").getValue().toString().equals("false")) {
                             String UID = snapshot.getKey();
                             UsersList.add(UID);

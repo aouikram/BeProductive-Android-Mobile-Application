@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class JourneyFragment extends Fragment {
-    private Button setGoal;
+    private Button setGoal , signOut , button_Tracker , progress;
     private FirebaseAuth mAuth;
 
     @Nullable
@@ -23,23 +23,44 @@ public class JourneyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.journey_home, container, false);
         setGoal = (Button) rootView.findViewById(R.id.button2);
+        signOut = (Button) rootView.findViewById(R.id.button4);
+        progress = (Button) rootView.findViewById(R.id.progress);
         setGoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 send();
             }
         });
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logoutUser();
+            }
+        });
+
+        progress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendProg();
+            }
+        });
       return rootView ;
     }
 
-public void send(){
+
+    private void sendProg() {
+        Intent intent = new Intent(getActivity(), TrackProgress.class);
+        startActivity(intent);
+    }
+    public void send(){
     Intent intent = new Intent(getActivity(), ChooseGoal.class);
     startActivity(intent);
 }
-/*public void logoutUser(View view) {
+public void logoutUser() {
         mAuth.signOut();
         Intent intent = new Intent(getActivity(), LogSignUp.class);
         startActivity(intent);
         return;
-    }*/
+    }
+
 }

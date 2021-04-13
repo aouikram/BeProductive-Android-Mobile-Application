@@ -7,6 +7,7 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature android:name="android.hardware.INTERNET" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -16,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Main">
-        <activity android:name=".GroupChatActivity"/>
+        <activity android:name=".AddNoteActivity"></activity>
+        <activity android:name=".TrackProgress" />
+        <activity android:name=".GroupChatActivity" />
         <activity android:name=".Skills" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>

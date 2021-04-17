@@ -4,9 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Match">
-    <TextView android:layout_width="match_parent"
-        android:text="we are looking for your match"
-        android:layout_height="wrap_content"
-        />
+    android:background="@drawable/matchingyou"
+    tools:context=".Match"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="239dp"
+        android:layout_height="119dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="270dp"
+        android:fontFamily="@font/abeezee"
+        android:text="We are
+        looking for your match  "
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
+
 </LinearLayout>

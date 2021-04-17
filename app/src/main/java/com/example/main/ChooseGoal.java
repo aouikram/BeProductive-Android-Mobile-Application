@@ -25,6 +25,7 @@ public class ChooseGoal extends AppCompatActivity implements View.OnClickListene
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
         currentUId = mAuth.getCurrentUser().getUid();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         skillCard=(CardView)findViewById(R.id.skill_card);
         languageCard=(CardView)findViewById(R.id.language_card);

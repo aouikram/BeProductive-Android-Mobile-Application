@@ -1,28 +1,31 @@
 package com.example.main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class AddNoteActivity extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper;
-    private Button btnAdd, btnViewData;
+    private CardView btnAdd1;
+    private ImageView btnView1;
     private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_note);
+        setContentView(R.layout.activity_track_progress);
         editText = (EditText) findViewById(R.id.editText1);
-        btnAdd = (Button) findViewById(R.id.btnAdd1);
-        btnViewData = (Button) findViewById(R.id.btnView1);
+        btnAdd1 = (CardView) findViewById(R.id.btnAdd1);
+        btnView1 = (ImageView) findViewById(R.id.btnView1);
         mDatabaseHelper = new DatabaseHelper(this);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+        btnAdd1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String newEntry = editText.getText().toString();
@@ -35,10 +38,10 @@ public class AddNoteActivity extends AppCompatActivity {
 
             }
         });
-        btnViewData.setOnClickListener(new View.OnClickListener() {
+        btnView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddNoteActivity.this, TrackProgress.class);
+                Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

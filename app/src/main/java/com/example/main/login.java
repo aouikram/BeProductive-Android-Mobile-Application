@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,7 @@ public class login extends AppCompatActivity {
     private Button mLogin;
     private EditText mEmail;
     private EditText mPassword;
+    private ImageButton mBack;
     private FirebaseAuth mAuth ;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener ;
 
@@ -32,6 +34,7 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         mAuth =FirebaseAuth.getInstance();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -44,6 +47,7 @@ public class login extends AppCompatActivity {
                 }
             }
         };
+        mBack = (ImageButton) findViewById(R.id.Back);
         mLogin = (Button) findViewById(R.id.login_btn);
         mEmail = (EditText) findViewById(R.id.login_email);
         mPassword = (EditText) findViewById(R.id.login_password);
@@ -62,7 +66,14 @@ public class login extends AppCompatActivity {
 
                 });
             }
-        }); }
+        });
+    mBack.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(login.this, MainActivity.class);
+            startActivity(intent);
+        }
+    });}
     @Override
     protected void onStart() {
         super.onStart();

@@ -38,20 +38,11 @@ public class JourneyFragment extends Fragment {
             }
         });
 
-        progress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendProg();
-            }
-        });
+
       return rootView ;
     }
 
 
-    private void sendProg() {
-        Intent intent = new Intent(getActivity(), TrackProgress.class);
-        startActivity(intent);
-    }
     public void send(){
     Intent intent = new Intent(getActivity(), ChooseGoal.class);
     startActivity(intent);

@@ -1,6 +1,7 @@
 package com.example.main.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
     public interface OnRecyclerItemClick {
         void onClick(int pos);
+    }
+
+    public NotesModel getItem(int position) {
+        return notesModelList.get(position);
     }
 
     public void setOnRecyclerItemClick(OnRecyclerItemClick onRecyclerItemClick) {
@@ -98,11 +103,13 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
             view = itemView.findViewById(R.id.view1);
 
             itemView.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
                     if (onRecyclerItemClick != null) {
                         int pos = getAdapterPosition();
                         if (pos != RecyclerView.NO_POSITION) {
+                            Log.d("TAG","I have been clicked");
                             onRecyclerItemClick.onClick(pos);
                         }
                     }

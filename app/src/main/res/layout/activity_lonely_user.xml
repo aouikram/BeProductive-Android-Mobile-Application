@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LonelyUser"
+    android:background="@drawable/bg4"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="279dp"
+        android:layout_height="90dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="We currently can't find a match for you "
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp" />
+
+    <TextView
+        android:layout_width="279dp"
+        android:layout_height="201dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Continue and you will be matched once someone else chooses the same goal "
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp" />
+
+    <TextView
+        android:layout_width="279dp"
+        android:layout_height="107dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="or go back and choose another one "
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/continue_button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:text="continue"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/teal_200"
+        android:height="75dp"
+        />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:height="75dp"
+        android:text="Go back"
+         android:elevation="3dp"
+        android:textColor="@color/black"
+        app:backgroundTint="@android:color/transparent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:layout_marginLeft="70dp"
+        android:fontFamily="@font/damion"
+        android:text="PS : You can change your goal later"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
+</LinearLayout>

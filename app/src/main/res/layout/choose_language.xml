@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/laka"
+    tools:context=".languages">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@color/white"
+    android:fontFamily="@font/archivo_black"
+    android:text="Hello,"
+    android:textAlignment="center"
+    android:layout_marginTop="270dp"
+    android:textSize="30dp"
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/abeezee"
+        android:text="What language do you want to learn ? "
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="23dp" />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:id="@+id/white_circle_3"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginRight="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="80dp"
+            android:padding="12dp"
+            android:background="@drawable/bg_item">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_spain"/>
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Learn Spanish"
+                    android:textColor="#4a4a4a"
+                    android:textSize="18sp" />
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/white_circle_1"
+            android:orientation="horizontal"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginRight="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="80dp"
+            android:padding="12dp"
+            android:background="@drawable/bg_item">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_china"
+                 />
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Learn Chinese"
+                    android:textColor="#4a4a4a"
+                    android:textSize="18sp" />
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/white_circle_4"
+            android:orientation="horizontal"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginRight="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="80dp"
+            android:padding="12dp"
+            android:background="@drawable/bg_item">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_germany"/>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Learn German"
+                    android:textColor="#4a4a4a"
+                    android:textSize="18sp" />
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/white_circle_2"
+            android:orientation="horizontal"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginRight="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="80dp"
+            android:padding="12dp"
+            android:background="@drawable/bg_item">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_france"
+                 />
+            <LinearLayout
+                android:layout_marginTop="8dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Learn French"
+                    android:textColor="#4a4a4a"
+                    android:textSize="18sp" />
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

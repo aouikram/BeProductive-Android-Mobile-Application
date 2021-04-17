@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 
 import java.util.ArrayList;
@@ -61,6 +64,20 @@ public class AdapterGroupChat extends RecyclerView.Adapter<AdapterGroupChat.Hold
      String message = model.getMessage();
      String timestamp = model.getTimestamp();
      String senderUid = model.getSender();
+     String type = model.getType();
+
+     if(type.equals("text")) {
+        holder.messageIv.setVisibility(View.GONE);
+         holder.messageTv.setVisibility(View.VISIBLE);
+         holder.timeTv.setVisibility(View.VISIBLE);
+         holder.nameTv.setVisibility(View.VISIBLE);
+     }else {
+         holder.messageIv.setVisibility(View.VISIBLE);
+         holder.messageTv.setVisibility(View.GONE);
+         holder.timeTv.setVisibility(View.GONE);
+         holder.nameTv.setVisibility(View.GONE);
+         Picasso.get().load(message).placeholder(R.drawable.ic_image_black_foreground).into(holder.messageIv);
+     }
 
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         cal.setTimeInMillis(Long.parseLong(timestamp));
@@ -103,13 +120,16 @@ public class AdapterGroupChat extends RecyclerView.Adapter<AdapterGroupChat.Hold
         return MSG_TYPE_LEFT ; }
     }
 
-    class  HolderGroupChat extends RecyclerView.ViewHolder{
+    class  HolderGroupChat extends RecyclerView.ViewHolder  {
        private TextView nameTv , messageTv , timeTv;
+       private ImageView messageIv;
        public HolderGroupChat(@NonNull View itemView) {
            super(itemView);
            nameTv = itemView.findViewById(R.id.nameTv);
            messageTv = itemView.findViewById(R.id.messageTv);
            timeTv = itemView.findViewById(R.id.timeTv);
+           messageIv=itemView.findViewById(R.id.messageIv);
        }
-   }
+
+    }
 }

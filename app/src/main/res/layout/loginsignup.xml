@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/app_logo"
         android:layout_width="match_parent"
-        android:layout_height="153dp"
+        android:layout_height="222dp"
         android:layout_marginTop="60dp"
         android:src="@drawable/logo" />
 
@@ -28,46 +28,52 @@
         android:gravity="center_horizontal"
         android:text="BeProductive"
         android:textAlignment="center"
-        android:textColor="#A52A2A"
-        android:textSize="25sp"
-        android:textStyle="italic" />
+        android:textColor="#143098"
+        android:textSize="40sp"
+        android:fontFamily="@font/damion"
+        />
 
     <Button
         android:id="@+id/login_btn"
-        android:layout_width="match_parent"
+        android:layout_width="146dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="89dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="267dp"
+        android:layout_marginEnd="52dp"
         android:layout_marginRight="15dp"
-        android:background="@drawable/button"
-        android:padding="20dp"
-        android:textAllCaps="false"
-        android:textSize="18sp"
+        android:layout_marginBottom="75dp"
+        android:fontFamily="@font/abeezee"
+        android:text="Log in "
         android:textAlignment="center"
-
-        android:text="Already have an Account? log in "
-        android:textColor="@android:color/white"
-        android:layout_alignParentLeft="true"
-        android:gravity="center_horizontal" />
+        android:textColor="#040404"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        app:backgroundTint="#FF9800" />
 
     <Button
         android:id="@+id/join_now"
-        android:layout_width="match_parent"
+        android:layout_width="146dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/login_btn"
-        android:layout_marginLeft="15dp"
+        android:layout_alignStart="@+id/app_name"
+        android:layout_alignTop="@+id/login_btn"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="217dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/cadre"
-        android:padding="20dp"
-        android:text="Sign up"
+        android:layout_marginBottom="73dp"
+        android:fontFamily="@font/abeezee"
+        android:text="sign up "
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:gravity="center_horizontal" />
+        android:textColor="#040404"
+        android:textSize="20dp"
+        app:backgroundTint="#FF9800" />
 
 
 </RelativeLayout>

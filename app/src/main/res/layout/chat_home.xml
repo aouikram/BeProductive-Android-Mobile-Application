@@ -5,77 +5,147 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ChatFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/chathome">
 <androidx.cardview.widget.CardView
+    android:layout_marginTop="50dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     android:background="@color/white"
     app:contentPadding="3dp"
     android:clickable="true"
-    android:layout_marginTop="1dp"
     app:cardCornerRadius="8dp"
     android:id="@+id/groupCard"
    >
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/groupIconIv"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/ic_group_primary_foreground" />
-
+            android:src="@drawable/group_icon_me" />
         <TextView
             android:id="@+id/groupTitleTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-
             android:layout_toEndOf="@id/groupIconIv"
-            android:text="Group Title"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:layout_toRightOf="@id/groupIconIv"
             android:layout_marginLeft="4dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/nameTv"
-            android:layout_toEndOf="@id/groupIconIv"
-            android:layout_below="@id/groupTitleTv"
-            android:layout_toRightOf="@id/groupIconIv"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:text="Sender Name"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/messageTv"
-            android:textColor="#666262"
-            android:layout_below="@+id/groupTitleTv"
-            android:layout_toEndOf="@id/nameTv"
-            android:text="the message"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_toRightOf="@id/nameTv" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/timeTv"
-            android:textColor="#666262"
-            android:layout_below="@+id/nameTv"
-            android:text="the time"
-            android:singleLine="true"
-            android:layout_marginEnd="5dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp" />
-
-
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_item"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_height="400dp"
+        android:fillViewport="true"
+        android:layout_marginBottom="30dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/notes_items"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
+                    tools:itemCount="6"
+                    android:id="@+id/recycler"/>
+
+            </LinearLayout>
+        </FrameLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/change_goal_card"
+            android:clickable="true"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            app:cardCornerRadius="8dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="30dp"
+
+
+            >
+            <LinearLayout
+                android:background="@drawable/bg_orange"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                     android:layout_marginLeft="20dp"
+                   android:padding="5dp"
+                    android:text="Change goal"
+                    android:fontFamily="@font/abeezee"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                   />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/take_note_card"
+            android:clickable="true"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            app:cardCornerRadius="8dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="40dp"
+
+            >
+            <LinearLayout
+                android:background="@drawable/bg_orange"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                   android:textAlignment="center"
+                    android:padding="5dp"
+                    android:fontFamily="@font/abeezee"
+                    android:text="Add note"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/outline_post_add"
+                    />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 </LinearLayout>

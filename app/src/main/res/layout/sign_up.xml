@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    tools:context=".Register"
+       >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/bgHeader"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/header_register"
+        android:elevation="1dp" />
+
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:elevation="10dp"
+        android:transitionName="tvLogin"
+        android:text="Sign up"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <ImageView
+            android:id="@+id/circle1"
+            android:layout_width="134dp"
+            android:layout_height="134dp"
+
+            android:layout_marginLeft="-25dp"
+            android:layout_marginTop="-5dp"
+            android:src="@drawable/circletrasparant" />
+
+        <ImageView
+            android:id="@+id/circle3"
+            android:layout_width="182dp"
+            android:layout_height="182dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="-80dp"
+            android:layout_marginBottom="-30dp"
+            android:src="@drawable/circle" />
+
+
+
+        <RelativeLayout
+            android:id="@+id/rlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv"
+                android:layout_width="344dp"
+                android:layout_height="459dp"
+                android:layout_marginTop="160dp"
+                android:layout_centerInParent="true"
+                android:elevation="5dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="318dp"
+                    android:layout_height="483dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="50dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Email"
+                        android:textColor="@color/colorPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:inputType="textEmailAddress" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Name"
+                        android:textColor="@color/colorPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:inputType="text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Birthday"
+                        android:textColor="@color/colorPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/birthday"
+                            android:layout_width="213dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:inputType="date" />
+
+                        <ImageView
+                            android:id="@+id/calendar"
+                            android:layout_width="50dp"
+                            android:layout_height="70dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/ic_calendar_today" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Password"
+                        android:textColor="@color/colorPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="308dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:inputType="textPassword" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="128dp"
+                        android:orientation="horizontal">
+
+                        <com.hbb20.CountryCodePicker
+                            android:layout_marginTop="20dp"
+                            android:id="@+id/ccp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="82dp"
+                            app:ccp_autoDetectCountry="true"
+                            app:ccp_countryPreference="ma"
+                            app:ccp_hintExampleNumberType="FIXED_LINE" />
+
+                        <EditText
+                            android:id="@+id/editText_carrierNumber"
+                            android:layout_width="189dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="20dp"
+                            android:inputType="phone"
+                            android:singleLine="true" />
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/register_btn"
+                android:layout_width="254dp"
+                android:layout_height="51dp"
+                android:layout_alignStart="@+id/cv"
+                android:layout_alignTop="@+id/cv"
+                android:layout_alignEnd="@+id/cv"
+                android:layout_alignBottom="@+id/cv"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="484dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginBottom="-76dp"
+                android:text="Sign up"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:backgroundTint="#FF9800" />
+        </RelativeLayout>
+    </RelativeLayout>

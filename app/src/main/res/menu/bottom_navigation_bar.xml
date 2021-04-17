@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
     <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/nav_journey"
-        android:icon="@drawable/journey"
-        android:title="Journey" />
+
         <item
             android:id="@+id/nav_chat"
             android:icon="@drawable/chat"
             android:title="Chat" />
+    <item
+        android:id="@+id/nav_journey"
+        android:icon="@drawable/journey"
+        android:title="Journey" />
 
         <item
             android:id="@+id/nav_group"
             android:icon="@drawable/group"
-            android:title="Group" />
+            android:title="Post" />
         <item
             android:id="@+id/nav_explore"
             android:icon="@drawable/explore"

@@ -38,10 +38,9 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
     private Button mRegister;
-    private EditText mEmail,mName,mLastName,mPassword;
+    private EditText mEmail,mName,mPassword;
     private FirebaseAuth mAuth ;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener ;
-    private RadioGroup mRadioGroup;
     EditText editTextCarrierNumber;
     CountryCodePicker ccp;
     private int day,month,year;
@@ -58,8 +57,9 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register);
+        setContentView(R.layout.sign_up);
         mAuth =FirebaseAuth.getInstance();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -101,11 +101,9 @@ public class Register extends AppCompatActivity {
         mRegister = (Button) findViewById(R.id.register_btn);
         mEmail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
-        mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         mName = (EditText) findViewById(R.id.name);
         RegisterBirthday = (EditText)findViewById(R.id.birthday);
         calendaricon = (ImageView) findViewById(R.id.calendar);
-        mLastName = (EditText) findViewById(R.id.lastname);
         calendaricon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,18 +143,9 @@ public class Register extends AppCompatActivity {
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // check if radioButton is not checked if it is continue
-                int selectId = mRadioGroup.getCheckedRadioButtonId();
-
-                final RadioButton radioButton = (RadioButton) findViewById(selectId);
-
-                if(radioButton.getText() == null){
-                    return;
-                }
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
                 final String name = mName.getText().toString();
-                final String lastname = mLastName.getText().toString();
                 String birthday = RegisterBirthday.getText().toString();
                 String phone = editTextCarrierNumber.getText().toString();
                 if (TextUtils.isEmpty(email)) {
@@ -164,8 +153,6 @@ public class Register extends AppCompatActivity {
                 }
                 if (TextUtils.isEmpty(name)) {
                     mName.setError("Please enter your name");
-                } else if (TextUtils.isEmpty(lastname)) {
-                    mLastName.setError("Please enter your lastname");
                 } else if (TextUtils.isEmpty(password)) {
                    mPassword.setError("Please enter a password");
                 } else if (TextUtils.isEmpty(birthday)) {
@@ -189,10 +176,8 @@ public class Register extends AppCompatActivity {
 
 
                             userInfo.put("name", name);
-                            userInfo.put("Lastname", lastname);
                             userInfo.put("Birthday", birthday);
                             userInfo.put("phone", phone);
-                            userInfo.put("sex", radioButton.getText().toString());
                             userInfo.put("profileImageUrl", "default");
                             userInfo.put("email",email);
                             userInfo.put("uid",userId);

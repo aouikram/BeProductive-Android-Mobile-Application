@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -30,13 +31,13 @@ public class Match extends AppCompatActivity {
     private List<String> UsersList;
     private Integer groupSize ;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.v("Tag" , "match called ");
 
         setContentView(R.layout.activity_match);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
         Log.v("TAG", "reference made ");
         mAuth = FirebaseAuth.getInstance();
@@ -53,7 +54,7 @@ public class Match extends AppCompatActivity {
         {
             Log.v("TAG", " lonely user ");
             Toast.makeText(this, "Try again later", Toast.LENGTH_SHORT).show();
-            Intent i= new Intent(this, MainActivity.class);
+            Intent i= new Intent(this, LonelyUser.class);
             startActivity(i);
         }
         else {
@@ -83,17 +84,17 @@ public class Match extends AppCompatActivity {
 
         Random rand = new Random();
         String GroupId =randomList.get(0); // group Id is same as the first user in the group
-        Log.v("TAG", GroupId);
         DatabaseReference groupref= FirebaseDatabase.getInstance().getReference().child("Users").child("GroupTable").child(userGoalType+"Groups");
          groupref.child(GroupId).child("groupTitle").setValue(userGoalType+" Group");
          groupref.child(GroupId).child("groupId").setValue(GroupId);
+         usersDb.child("AllUsers").child(currentUId).child("groupId").setValue(GroupId);
         Log.v("TAG", "Table created");
         for(int i=0 ; i<randomList.size(); i++)
         {    // insert users
             Log.v("TAG", "hi");
             usersDb.child("GroupTable").child(userGoalType+"Groups").child(GroupId).child("participants").child(randomList.get(i)).setValue(true);
         }
-            Log.v("TAG", "users added ");
+        Log.v("TAG", "users added ");
         sendToMainActivity();
 
  }}
@@ -185,6 +186,7 @@ public class Match extends AppCompatActivity {
                     if (number < 4 && i==0 ) {
                         GoalDb.child(currentUId).child("group").setValue("true");
                         FirebaseDatabase.getInstance().getReference().child("Users").child("GroupTable").child(userGoalType + "Groups").child(snapshot.getKey()).child("participants").child(currentUId).setValue(true);
+                        usersDb.child("AllUsers").child(currentUId).child("groupId").setValue(currentUId);
                         i++; Log.v("Tag" , "user added to existing group");
                         sendToMainActivity();
                     }

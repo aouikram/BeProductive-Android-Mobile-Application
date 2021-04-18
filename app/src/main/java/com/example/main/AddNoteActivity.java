@@ -24,6 +24,7 @@ public class AddNoteActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.editText1);
         btnAdd1 = (CardView) findViewById(R.id.btnAdd1);
         btnView1 = (ImageView) findViewById(R.id.btnView1);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         mDatabaseHelper = new DatabaseHelper(this);
         btnAdd1.setOnClickListener(new View.OnClickListener() {
             @Override

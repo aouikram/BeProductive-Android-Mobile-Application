@@ -61,7 +61,6 @@ public class ChatFragment extends Fragment implements NotesAdapter.OnRecyclerIte
         recyclerView = view.findViewById(R.id.recycler);
         take_note_card = (CardView) view.findViewById(R.id.take_note_card);
         change_goal_card = (CardView) view.findViewById(R.id.change_goal_card);
-
         mDatabaseHelper = new DatabaseHelper(getActivity());
         populateView();
         take_note_card.setOnClickListener(new View.OnClickListener() {
@@ -128,9 +127,8 @@ public class ChatFragment extends Fragment implements NotesAdapter.OnRecyclerIte
                 if (dataSnapshot.exists()){
                     if (dataSnapshot.child("Goals").getValue() != null){
                         userGoal = dataSnapshot.child("Goals").getValue().toString();
-
-
-                    } checkGoalType(userGoal);
+                        checkGoalType(userGoal);
+                    }
                 }
             }
             @Override

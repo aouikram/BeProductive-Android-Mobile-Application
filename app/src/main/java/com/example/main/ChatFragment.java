@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.main.adapters.NotesAdapter;
@@ -48,6 +49,7 @@ public class ChatFragment extends Fragment implements NotesAdapter.OnRecyclerIte
     private RecyclerView recyclerView;
     private CardView take_note_card;
     private NotesAdapter notesAdapter;
+
 
     public ChatFragment() {
 
@@ -198,6 +200,7 @@ public class ChatFragment extends Fragment implements NotesAdapter.OnRecyclerIte
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
                 for(DataSnapshot ds : snapshot.getChildren()){
                     if(ds.child("participants").child(mAuth.getUid()).exists()){
                         groupId = ds.child("groupId").getValue(String.class) ;
@@ -205,12 +208,10 @@ public class ChatFragment extends Fragment implements NotesAdapter.OnRecyclerIte
                         groupTitleTv.setText(ds.child("groupTitle").getValue(String.class));
 
                     }else {
-                        groupId=getGroupId();
-                        System.out.println("groupId="+groupId);
-                        groupTitleTv.setText(ds.child("groupTitle").getValue(String.class));
+                        groupCard.setVisibility(View.GONE);
                     }
                 }
-            }
+            }else {groupCard.setVisibility(View.GONE);} }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

@@ -16,7 +16,7 @@ public class LogSignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginsignup);
-        getSupportActionBar().setTitle("BeProductive");
+
         joinNow = (Button) findViewById(R.id.join_now);
         login = (Button) findViewById(R.id.login_btn);
         login.setOnClickListener(new View.OnClickListener() {

@@ -39,19 +39,20 @@
 
 
     </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="661dp"
         android:elevation="1dp">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chatRv"
-        app:stackFromEnd="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:layout_above="@id/ChatLayout"
-        tools:listitem="@layout/row_groupchat_left"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatRv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ChatLayout"
+            android:layout_below="@+id/toolbar"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:stackFromEnd="true"
+            tools:listitem="@layout/row_groupchat_left" />
     </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

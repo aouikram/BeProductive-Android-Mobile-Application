@@ -14,7 +14,7 @@ public class LonelyUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lonely_user);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         continue_button = (Button) findViewById(R.id.continue_button);
         back = (Button) findViewById(R.id.back);
         continue_button.setOnClickListener(new View.OnClickListener() {

@@ -29,7 +29,6 @@ public class Skills extends AppCompatActivity implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
         currentUId = mAuth.getCurrentUser().getUid();
         Log.v("Tag" , "authetification success ");
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         BackendIv = findViewById(R.id.BackendIV);
         FrontendIv = findViewById(R.id.FrontendIv);

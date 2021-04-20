@@ -59,7 +59,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
         mAuth =FirebaseAuth.getInstance();
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -109,11 +109,11 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 final Calendar calendar = Calendar.getInstance();
                 day = calendar.get(Calendar.DAY_OF_MONTH);
-                month = calendar.get(Calendar.MONTH);
+                month = calendar.get(Calendar.MONTH)+1;
                 year = calendar.get(Calendar.YEAR);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(Register.this, android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
                         RegisterBirthday.setText(day +"/" + month +"/" + year);
                     }
                 }, year, month, day);
@@ -126,11 +126,11 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 final Calendar calendar = Calendar.getInstance();
                 day = calendar.get(Calendar.DAY_OF_MONTH);
-                month = calendar.get(Calendar.MONTH);
+                month = calendar.get(Calendar.MONTH)+1;
                 year = calendar.get(Calendar.YEAR);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(Register.this, android.R.style.Theme_Holo_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
                         RegisterBirthday.setText(day +"/" + month +"/" + year);
                     }
                 }, year, month, day);
@@ -182,7 +182,7 @@ public class Register extends AppCompatActivity {
                             userInfo.put("email",email);
                             userInfo.put("uid",userId);
                             currentUserDb.updateChildren(userInfo);
-                            Intent intent = new Intent(Register.this, ChooseGoal.class);
+                            Intent intent = new Intent(Register.this, RegisterNext.class);
                             startActivity(intent);
                             finish();
                             return;

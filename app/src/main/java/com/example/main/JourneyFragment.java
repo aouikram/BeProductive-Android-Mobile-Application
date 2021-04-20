@@ -23,6 +23,7 @@ public class JourneyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.journey_home, container, false);
         setGoal = (Button) rootView.findViewById(R.id.button2);
+        mAuth=FirebaseAuth.getInstance();
         signOut = (Button) rootView.findViewById(R.id.button4);
         progress = (Button) rootView.findViewById(R.id.progress);
         setGoal.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +52,7 @@ public void logoutUser() {
         mAuth.signOut();
         Intent intent = new Intent(getActivity(), LogSignUp.class);
         startActivity(intent);
-        return;
+
     }
 
 }

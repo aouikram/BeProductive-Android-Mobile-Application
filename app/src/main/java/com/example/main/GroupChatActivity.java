@@ -81,9 +81,6 @@ Uri image_rui = null ;
           chatRv = findViewById(R.id.chatRv);
 
 
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("black"));
-        getSupportActionBar().setBackgroundDrawable(colorDrawable);
-
        Intent i = getIntent();
        groupId = i.getStringExtra("groupId");
 
@@ -229,7 +226,7 @@ Uri image_rui = null ;
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                  for(DataSnapshot ds: snapshot.getChildren()){
                      String groupTitle = (String) ds.child("groupTitle").getValue();
-                     getSupportActionBar().setTitle(groupTitle);
+
                  }loadGroupMessages(userGoalType);
             }
 

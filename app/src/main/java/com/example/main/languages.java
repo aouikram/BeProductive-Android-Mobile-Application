@@ -26,7 +26,6 @@ public class languages extends AppCompatActivity implements View.OnClickListener
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
         currentUId = mAuth.getCurrentUser().getUid();
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
         white_circle_1 = findViewById(R.id.white_circle_1);
         white_circle_2 = findViewById(R.id.white_circle_2);
         white_circle_3 = findViewById(R.id.white_circle_3);

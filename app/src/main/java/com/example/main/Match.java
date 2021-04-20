@@ -37,7 +37,6 @@ public class Match extends AppCompatActivity {
         Log.v("Tag" , "match called ");
 
         setContentView(R.layout.activity_match);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
         Log.v("TAG", "reference made ");
         mAuth = FirebaseAuth.getInstance();

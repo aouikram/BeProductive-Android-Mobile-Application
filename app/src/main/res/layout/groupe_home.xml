@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_green_light">
+    android:background="#EFECEC">
 
     <include
         android:id="@+id/main_page_toolbar"
@@ -34,15 +34,15 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/add_post"
+        android:src="@drawable/ic_add_post"
         android:scaleType="centerCrop"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="4dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="#EFECEC"
         android:baselineAlignBottom="false"
         android:clickable="true"
         android:focusableInTouchMode="false"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="#EFECEC"
         android:visibility="visible" />
 
 </RelativeLayout>

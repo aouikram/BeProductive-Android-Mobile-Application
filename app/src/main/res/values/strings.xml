@@ -9,4 +9,12 @@
     <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="string_open_camera">Open Camera</string>
+    <string name="string_next">Next</string>
+    <string name="gallery">GALLERY</string>
+    <string name="photo">PHOTO</string>
+    <string name="selected_bitmap">selected_bitmap</string>
+    <string name="selected_image">selected_image</string>
+    <string name="new_photo">new_photo</string>
+    <string name="string_share">Share</string>
 </resources>

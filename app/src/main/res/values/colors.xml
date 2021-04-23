@@ -27,4 +27,17 @@
     <color name="color8">#78E9C9</color>
     <color name="color9">#E97878</color>
     <color name="color10">#FFDF0E</color>
+
+
+    <color name="dark">#151C2B</color>
+    <color name="bluedark">#1C2B49</color>
+    <color name="gris">#CCCCCC</color>
+    <color name="grey">#bfbfbf</color>
+    <color name="link_blue">#4d94ff</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="blacktransparent">#72000000</color>
+    <color name="transparent_white_hex_1">#11ffffff</color>
+
 </resources>

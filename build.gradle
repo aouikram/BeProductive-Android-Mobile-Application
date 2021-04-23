@@ -20,6 +20,8 @@ allprojects {
         maven {
             url  'http://dl.bintray.com/gigamole/maven/'
         }
+        maven { url "https://jitpack.io" }
+
     }
 }
 

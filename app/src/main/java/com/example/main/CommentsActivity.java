@@ -106,10 +106,10 @@ public class CommentsActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull CommentsViewHolder holder, int position, @NonNull Comment model)
             {
-                holder.myUserName.setText("@" + model.getUsername() + "   ");
+                holder.myUserName.setText(model.getUsername() + "   ");
                 holder.myComment.setText(model.getComment());
-                holder.myDate.setText("Date: " + model.getDate());
-                holder.myTime.setText("   Time: " + model.getTime());
+                holder.myDate.setText(model.getDate());
+                holder.myTime.setText("  "+ model.getTime());
             }
 
             @NonNull
@@ -152,7 +152,7 @@ public class CommentsActivity extends AppCompatActivity {
 
         if(TextUtils.isEmpty(commentText))
         {
-            Toast.makeText(this, "Please write text to comment... ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please write a comment... ", Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -181,7 +181,7 @@ public class CommentsActivity extends AppCompatActivity {
                         {
                             if(task.isSuccessful())
                             {
-                                Toast.makeText(CommentsActivity.this, "You have commented successfully... ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CommentsActivity.this, "comment posted", Toast.LENGTH_SHORT).show();
                             }
                             else
                             {

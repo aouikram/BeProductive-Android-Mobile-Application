@@ -63,11 +63,11 @@ public class OthersProfile extends AppCompatActivity {
 
                     Picasso.get().load(myProfileImage).placeholder(R.drawable.profile).into(userProfileImage);
 
-                    userName.setText("@" + myUserName);
+                   // userName.setText(myUserName);
                     userProfName.setText(myProfileName);
                    // userStatus.setText(myProfileStatus);
 
-                    MaintananceofButtons();
+                   // MaintananceofButtons();
                 }
             }
 
@@ -78,7 +78,7 @@ public class OthersProfile extends AppCompatActivity {
             }
         });
 
-        DeclineFriendRequestButton.setVisibility(View.INVISIBLE);
+       /* DeclineFriendRequestButton.setVisibility(View.INVISIBLE);
         DeclineFriendRequestButton.setEnabled(false);
 
         if(!senderUserId.equals(receiverUserId))
@@ -113,9 +113,9 @@ public class OthersProfile extends AppCompatActivity {
         {
             DeclineFriendRequestButton.setVisibility(View.INVISIBLE);
             SendFriendReqButton.setVisibility(View.INVISIBLE);
-        }
+        }*/
     }
-
+/*
     private void UnFriendAnExistingFriend()
     {
         FriendsRef.child(senderUserId).child(receiverUserId)
@@ -346,18 +346,17 @@ public class OthersProfile extends AppCompatActivity {
                         }
                     }
                 });
-    }
+    }*/
 
     private void IntializeFields()
     {
-        userName = (TextView) findViewById(R.id.person_username);
+       // userName = (TextView) findViewById(R.id.person_username);
         userProfName = (TextView) findViewById(R.id.person_full_name);
-        userStatus = (TextView) findViewById(R.id.person_profile_status);
+        //userStatus = (TextView) findViewById(R.id.person_profile_status);
         userCountry = (TextView) findViewById(R.id.person_country);
         usersex = (TextView) findViewById(R.id.person_sex);
         userProfileImage = (CircleImageView) findViewById(R.id.person_profile_pic);
-        SendFriendReqButton = (Button) findViewById(R.id.person_send_friend_request_btn);
-        DeclineFriendRequestButton = (Button) findViewById(R.id.person_decline_friend_request);
+
 
         CURRENT_STATE = "not_firends";
     }

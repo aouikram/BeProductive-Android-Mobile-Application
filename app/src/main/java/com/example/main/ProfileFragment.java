@@ -1,9 +1,13 @@
 package com.example.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.main.adapters.PostAdapter;
+import com.example.main.models.Post;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,6 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -27,9 +37,12 @@ public class ProfileFragment extends Fragment {
     private CircleImageView userProfileImage;
     private DatabaseReference profileUserRef, FriendsRef, PostsRef;
     private FirebaseAuth mAuth;
-    private Button MyPosts, MyFriends;
+    private TextView MyPosts, MyFriends;
     private String currentUserId;
     private int countFriends = 0, countPosts = 0;
+    private RecyclerView recyclerView;
+    private PostAdapter PostAdapter;
+    private List<Post> postList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,35 +50,44 @@ public class ProfileFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
         profileUserRef = FirebaseDatabase.getInstance().getReference().child("Users").child("AllUsers").child(currentUserId);
-        FriendsRef = FirebaseDatabase.getInstance().getReference().child("Friends");
+        //  FriendsRef = FirebaseDatabase.getInstance().getReference().child("Friends");
         PostsRef = FirebaseDatabase.getInstance().getReference().child("Posts");
-        userName = (TextView) view.findViewById(R.id.my_username);
+       // SexeRef = FirebaseDatabase.getInstance().getReference().child("Users").child("AllUsers").
+
+       // userName = (TextView) view.findViewById(R.id.my_username);
         userProfName = (TextView) view.findViewById(R.id.my_profile_full_name);
-        userStatus = (TextView) view.findViewById(R.id.my_profile_status);
+       // userStatus = (TextView) view.findViewById(R.id.my_profile_status);
         userCountry = (TextView) view.findViewById(R.id.my_country);
-        userGender = (TextView) view.findViewById(R.id.my_gender);
-        userRelation = (TextView) view.findViewById(R.id.my_relationship_status);
-        userDOB = (TextView) view.findViewById(R.id.my_dob);
+       // userGender = (TextView) view.findViewById(R.id.my_gender);
+        //recyclerView = view.findViewById(R.id.recycler_view);
+       // recyclerView.setHasFixedSize(true);
+        LinearLayoutManager mLayoutManager = new GridLayoutManager(getContext(), 3);
+      //  recyclerView.setLayoutManager(mLayoutManager);
+        postList = new ArrayList<>();
+       PostAdapter = new PostAdapter(getContext(), postList);
+        recyclerView.setAdapter(PostAdapter);
         userProfileImage = (CircleImageView) view.findViewById(R.id.my_profile_pic);
-        MyFriends = (Button) view.findViewById(R.id.my_friends_button);
-        MyPosts = (Button) view.findViewById(R.id.my_post_button);
-         /* MyFriends.setOnClickListener(new View.OnClickListener()
+        MyFriends = (TextView) view.findViewById(R.id.my_friends_button);
+        MyPosts = (TextView) view.findViewById(R.id.my_post_button);
+        postss();
+
+        MyFriends.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 SendUserToFriendsActivity();
             }
-        });*/
+        });
 
-       /* MyPosts.setOnClickListener(new View.OnClickListener()
+        MyPosts.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 SendUserToMyPosts();
             }
-        });*/
+        });
 
         PostsRef.orderByChild("uid").startAt(currentUserId).endAt(currentUserId + "\uf8ff").addValueEventListener(new ValueEventListener()
         {
@@ -124,7 +146,7 @@ public class ProfileFragment extends Fragment {
                     String myUserName = dataSnapshot.child("username").getValue().toString();
                     String myProfileName = dataSnapshot.child("fullname").getValue().toString();
                     Picasso.get().load(myProfileImage).placeholder(R.drawable.profile).into(userProfileImage);
-                    userName.setText("@" + myUserName);
+                    //userName.setText("@" + myUserName);
                     userProfName.setText(myProfileName);
 
                 }
@@ -140,17 +162,39 @@ public class ProfileFragment extends Fragment {
    return view;
     }
 
-    /*private void SendUserToFriendsActivity()
+    private void SendUserToFriendsActivity()
     {
-        Intent friendsIntent = new Intent(ProfileActivity.this, FriendsActivity.class);
+        Intent friendsIntent = new Intent(getActivity(), FriendsActivity.class);
         startActivity(friendsIntent);
     }
 
     private void SendUserToMyPosts()
     {
-        Intent friendsIntent = new Intent(ProfileActivity.this, MyPosts.class);
+        Intent friendsIntent = new Intent(getActivity(), MyPosts.class);
         startActivity(friendsIntent);
-    }*/
+    }
+    private void postss(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                postList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Post post = snapshot.getValue(Post.class);
+                    if (post.getUid().equals(currentUserId)){
+                        postList.add(post);
+                    }
+                }
+                Collections.reverse(postList);
+                PostAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
 
 

@@ -1,6 +1,7 @@
 package com.example.main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ public class Health extends AppCompatActivity implements View.OnClickListener  {
     private FirebaseAuth mAuth;
     private DatabaseReference usersDb;
     private String currentUId;
-    private LinearLayout LWeight , GWeight , EatHealthy , Exercise ,Support , Anxiety , Care, Problem ;
+    private CardView LWeight , GWeight , EatHealthy , Exercise ,Support , Anxiety , Care, Problem ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

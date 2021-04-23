@@ -207,11 +207,10 @@ public class ChatFragment extends Fragment implements NotesAdapter.OnRecyclerIte
                         Log.v("TAG","group id set");
                         groupTitleTv.setText(ds.child("groupTitle").getValue(String.class));
 
-                    }else {
-                        groupCard.setVisibility(View.GONE);
+                    }
                     }
                 }
-            }else {groupCard.setVisibility(View.GONE);} }
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

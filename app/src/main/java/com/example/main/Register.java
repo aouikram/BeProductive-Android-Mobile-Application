@@ -178,7 +178,6 @@ public class Register extends AppCompatActivity {
                             userInfo.put("name", name);
                             userInfo.put("Birthday", birthday);
                             userInfo.put("phone", phone);
-                            userInfo.put("profileImageUrl", "default");
                             userInfo.put("email",email);
                             userInfo.put("uid",userId);
                             currentUserDb.updateChildren(userInfo);

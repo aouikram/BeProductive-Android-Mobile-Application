@@ -18,7 +18,7 @@ public class languages extends AppCompatActivity implements View.OnClickListener
     private FirebaseAuth mAuth;
     private DatabaseReference usersDb;
     private String currentUId;
-    private LinearLayout white_circle_1 , white_circle_2 , white_circle_3 , white_circle_4 ;
+    private LinearLayout white_circle_1 , white_circle_2 , white_circle_3 , white_circle_4 , white_circle_japan , white_circle_port;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +30,15 @@ public class languages extends AppCompatActivity implements View.OnClickListener
         white_circle_2 = findViewById(R.id.white_circle_2);
         white_circle_3 = findViewById(R.id.white_circle_3);
         white_circle_4 = findViewById(R.id.white_circle_4);
+        white_circle_japan = findViewById(R.id.white_circle_japan);
+        white_circle_port = findViewById(R.id.white_circle_port);
 
         white_circle_1.setOnClickListener(this);
         white_circle_2.setOnClickListener(this);
         white_circle_3.setOnClickListener(this);
         white_circle_4.setOnClickListener(this);
+        white_circle_japan.setOnClickListener(this);
+        white_circle_port.setOnClickListener(this);
 
     }
     @Override
@@ -57,8 +61,13 @@ public class languages extends AppCompatActivity implements View.OnClickListener
                 i= new Intent(this, Match.class);
                 startActivity(i);break;
 
-            case R.id.white_circle_4 :
-                usersDb.child("LanguageTable").child(currentUId).child("Type").setValue("german");
+            case R.id.white_circle_japan :
+                usersDb.child("LanguageTable").child(currentUId).child("Type").setValue("japanese");
+                i= new Intent(this, Match.class);
+                startActivity(i);break;
+
+            case R.id.white_circle_port :
+                usersDb.child("LanguageTable").child(currentUId).child("Type").setValue("portuguese");
                 i= new Intent(this, Match.class);
                 startActivity(i);break;
 

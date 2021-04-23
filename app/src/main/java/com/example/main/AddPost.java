@@ -73,11 +73,11 @@ public class AddPost extends AppCompatActivity
         PostDescription = (EditText) findViewById(R.id.post_description);
         loadingBar = new ProgressDialog(this);
 
-        mToolbar = (Toolbar) findViewById(R.id.update_post_page_toolbar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Update Post");
+        //mToolbar = (Toolbar) findViewById(R.id.update_post_page_toolbar);
+      //  setSupportActionBar(mToolbar);
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       // getSupportActionBar().setDisplayShowHomeEnabled(true);
+       // getSupportActionBar().setTitle("What's on your mind ?");
 
         SelectPostImage.setOnClickListener(new View.OnClickListener()
         {
@@ -160,8 +160,8 @@ public class AddPost extends AppCompatActivity
                 }
                 else
                 {
-                    String message = task.getException().getMessage();
-                    Toast.makeText(AddPost.this, "Error occured" + message, Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(AddPost.this, "select an image" , Toast.LENGTH_SHORT).show();
                 }
             }
         });

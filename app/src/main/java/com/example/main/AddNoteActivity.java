@@ -34,7 +34,7 @@ public class AddNoteActivity extends AppCompatActivity {
                     AddData(newEntry);
                     editText.setText("");
                 } else {
-                    toastMessage("You must put something in the text field!");
+                    toastMessage("You must write something in the text field!");
                 }
 
             }

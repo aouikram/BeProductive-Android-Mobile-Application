@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/relativeLayout1"
         android:layout_marginTop="660dp"
-        android:layout_marginLeft="250dp">
+        android:layout_marginLeft="200dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnAdd1"
@@ -93,11 +93,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             app:cardCornerRadius="8dp"
-
-
-
             >
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -114,7 +110,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="15dp"
-                    android:clickable="true"/>
+                   />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

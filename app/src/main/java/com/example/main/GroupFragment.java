@@ -65,7 +65,7 @@ public class GroupFragment extends Fragment {
         LikesRef = FirebaseDatabase.getInstance().getReference().child("Likes");
         mToolbar = (Toolbar) view.findViewById(R.id.main_page_toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Home");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("BeProductive");
         AddNewPostButton = (ImageButton) view.findViewById(R.id.add_new_post_button);
         postList = (RecyclerView) view.findViewById(R.id.all_users_post_list);
         postList.setHasFixedSize(true);
@@ -141,8 +141,8 @@ public class GroupFragment extends Fragment {
                         final String PostKey = getRef(position).getKey();
 
                         holder.username.setText(model.getFullname());
-                        holder.time.setText("   Time: " +model.getTime());
-                        holder.date.setText("Date: " +model.getDate());
+                        holder.time.setText(model.getTime());
+                        holder.date.setText(model.getDate());
                         holder.description.setText(model.getDescription());
                         Picasso.get().load(model.getProfileimage()).into(holder.user_post_image);
                         Picasso.get().load(model.getPostimage()).into(holder.postImage);

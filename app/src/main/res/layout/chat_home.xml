@@ -47,7 +47,7 @@
         android:background="@drawable/bg_item"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_height="400dp"
         android:fillViewport="true"
         android:layout_marginBottom="30dp"
@@ -86,7 +86,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/change_goal_card"
             android:clickable="true"
-            android:layout_width="150dp"
+            android:layout_width="140dp"
             android:layout_height="30dp"
             app:cardCornerRadius="8dp"
             android:layout_marginRight="10dp"
@@ -120,7 +120,7 @@
             android:layout_height="30dp"
             app:cardCornerRadius="8dp"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="20dp"
 
             >
             <LinearLayout

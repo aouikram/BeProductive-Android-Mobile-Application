@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +32,7 @@ public class UpdatePost extends AppCompatActivity
     private Button DeletePostButton, EditPostButton;
     private DatabaseReference ClickPostRef;
     private FirebaseAuth mAuth;
+    private CardView first , second ;
 
     private String PostKey, currentUserID, databaseUserID, description, image;
 
@@ -47,9 +49,12 @@ public class UpdatePost extends AppCompatActivity
         ClickPostRef = FirebaseDatabase.getInstance().getReference().child("Posts").child(PostKey);
 
         PostImage = (ImageView) findViewById(R.id.click_post_image);
-        PostDescription = (TextView) findViewById(R.id.click_post_description);
+
         DeletePostButton = (Button) findViewById(R.id.delete_post_button);
         EditPostButton = (Button) findViewById(R.id.edit_post_button);
+
+        first = (CardView) findViewById(R.id.first);
+        second = (CardView) findViewById(R.id.second);
 
         DeletePostButton.setVisibility(View.INVISIBLE);
         EditPostButton.setVisibility(View.INVISIBLE);
@@ -65,11 +70,13 @@ public class UpdatePost extends AppCompatActivity
                     image =dataSnapshot.child("postimage").getValue().toString();
                     databaseUserID = dataSnapshot.child("uid").getValue().toString();
 
-                    PostDescription.setText(description);
+
                     Picasso.get().load(image).into(PostImage);
 
                     if(currentUserID.equals(databaseUserID))
                     {
+                        first.setVisibility(View.VISIBLE);
+                        second.setVisibility(View.VISIBLE);
                         DeletePostButton.setVisibility(View.VISIBLE);
                         EditPostButton.setVisibility(View.VISIBLE);
                     }
@@ -132,7 +139,8 @@ public class UpdatePost extends AppCompatActivity
 
         Dialog dialog = builder.create();
         dialog.show();
-        dialog.getWindow().setBackgroundDrawableResource(android.R.color.holo_green_dark);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.holo_blue_dark);
+
     }
 
     private void DeleteCurrentPost()

@@ -42,7 +42,6 @@
         <activity android:name=".UpdatePost"/>
         <activity android:name=".OthersProfile"/>
         <activity android:name=".CommentsActivity"/>
-        <activity android:name=".FriendsActivity"/>
         <activity android:name=".MyPosts"/>
         <activity android:name=".EditProfile"/>
         <activity android:name=".ForgotPassword"/>

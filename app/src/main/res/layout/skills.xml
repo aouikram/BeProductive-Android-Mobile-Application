@@ -87,7 +87,7 @@
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
 
-                android:id="@+id/MarketingIv"
+                android:id="@+id/MarketingIV"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
                 android:layout_width="150dp"
@@ -98,6 +98,7 @@
                 app:cardCornerRadius="25dp">
 
                 <TextView
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Marketing"

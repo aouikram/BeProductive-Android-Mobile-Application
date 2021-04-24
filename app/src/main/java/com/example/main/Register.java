@@ -102,42 +102,7 @@ public class Register extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
         mAge= (EditText) findViewById(R.id.age);
-      //  RegisterBirthday = (EditText)findViewById(R.id.birthday);
-     /*   calendaricon = (ImageView) findViewById(R.id.calendar);
-        calendaricon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar calendar = Calendar.getInstance();
-                day = calendar.get(Calendar.DAY_OF_MONTH);
-                month = calendar.get(Calendar.MONTH)+1;
-                year = calendar.get(Calendar.YEAR);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(Register.this, android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int day) {
-                        RegisterBirthday.setText(day +"/" + month +"/" + year);
-                    }
-                }, year, month, day);
 
-                datePickerDialog.show();
-            }
-        });
-        RegisterBirthday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar calendar = Calendar.getInstance();
-                day = calendar.get(Calendar.DAY_OF_MONTH);
-                month = calendar.get(Calendar.MONTH)+1;
-                year = calendar.get(Calendar.YEAR);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(Register.this, android.R.style.Theme_Holo_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int day) {
-                        RegisterBirthday.setText(day +"/" + month +"/" + year);
-                    }
-                }, year, month, day);
-
-                datePickerDialog.show();
-            }
-        });*/
 
 
         mRegister.setOnClickListener(new View.OnClickListener() {
@@ -147,7 +112,6 @@ public class Register extends AppCompatActivity {
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
 
-               // String birthday = RegisterBirthday.getText().toString();
                 String phone = editTextCarrierNumber.getText().toString();
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(Register.this,"email can not be empty" , Toast.LENGTH_SHORT).show();
@@ -168,7 +132,7 @@ public class Register extends AppCompatActivity {
                         if(!task.isSuccessful()) {
                             Toast.makeText(Register.this,"sign_up_error" , Toast.LENGTH_SHORT).show();
                     }else {
-                            // task is succesful we add infos about user in database
+
                             String userId = mAuth.getCurrentUser().getUid();
                             DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child("AllUsers").child(userId);
                             Map userInfo = new HashMap<>();

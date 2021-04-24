@@ -1,18 +1,20 @@
 package com.example.main.models;
 
 public class SearchFriend {
-    public String profileimage, fullname, status;
+    public String profileimage;
+    public String fullname;
+    public String age;
 
     public SearchFriend()
     {
 
     }
 
-    public SearchFriend(String profileimage, String fullname, String status)
+    public SearchFriend(String profileimage, String fullname, String age)
     {
         this.profileimage = profileimage;
         this.fullname = fullname;
-        this.status = status;
+        this.age = age;
     }
 
     public String getProfileimage() {
@@ -23,10 +25,6 @@ public class SearchFriend {
         return fullname;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
     public void setProfileimage(String profileimage) {
         this.profileimage = profileimage;
     }
@@ -35,7 +33,10 @@ public class SearchFriend {
         this.fullname = fullname;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setAge(String age) { this.age = age;}
+
+    public String getAge() {
+        return age;
     }
 }
+

@@ -24,14 +24,13 @@ import java.util.Calendar;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class OthersProfile extends AppCompatActivity {
-    private TextView userName, userProfName, userStatus, userCountry,usersex;
+    private TextView userName, userProfName, userCountry;
     private CircleImageView userProfileImage;
-    private Button SendFriendReqButton, DeclineFriendRequestButton;
     private String age , sexe ;
-    private DatabaseReference FriendsRequestRef, UsersRef, FriendsRef;
-    private DatabaseReference profileUserRef,  PostsRef , AgeRef , SexeRef;
+    private DatabaseReference  UsersRef;
+    private DatabaseReference   AgeRef , SexeRef;
     private FirebaseAuth mAuth;
-    private String senderUserId, receiverUserId, CURRENT_STATE, saveCurrentDate;
+    private String senderUserId, receiverUserId;
     private TextView Age,Sexe;
 
     @Override
@@ -46,8 +45,6 @@ public class OthersProfile extends AppCompatActivity {
 
         receiverUserId = getIntent().getExtras().get("visit_user_id").toString();
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child("AllUsers");
-        FriendsRequestRef = FirebaseDatabase.getInstance().getReference().child("FriendRequests");
-        FriendsRef = FirebaseDatabase.getInstance().getReference().child("Friends");
         AgeRef = FirebaseDatabase.getInstance().getReference().child("Users").child("AllUsers").child(receiverUserId);
         SexeRef = FirebaseDatabase.getInstance().getReference().child("Users").child("AllUsers").child(receiverUserId);
         Age = (TextView) findViewById(R.id.Age);
@@ -67,16 +64,10 @@ public class OthersProfile extends AppCompatActivity {
                     String myProfileImage = dataSnapshot.child("profileimage").getValue().toString();
                     String myUserName = dataSnapshot.child("username").getValue().toString();
                     String myProfileName = dataSnapshot.child("fullname").getValue().toString();
-                    // String myProfileStatus = dataSnapshot.child("status").getValue().toString();
-                    ;
+
 
                     Picasso.get().load(myProfileImage).placeholder(R.drawable.profile).into(userProfileImage);
-
-                   // userName.setText(myUserName);
                     userProfName.setText(myProfileName);
-                   // userStatus.setText(myProfileStatus);
-
-                   // MaintananceofButtons();
                 }
             }
 
@@ -91,15 +82,11 @@ public class OthersProfile extends AppCompatActivity {
 
     private void IntializeFields()
     {
-       // userName = (TextView) findViewById(R.id.person_username);
         userProfName = (TextView) findViewById(R.id.person_full_name);
-        //userStatus = (TextView) findViewById(R.id.person_profile_status);
         userCountry = (TextView) findViewById(R.id.person_country);
 
         userProfileImage = (CircleImageView) findViewById(R.id.person_profile_pic);
 
-
-        CURRENT_STATE = "not_firends";
     }
     public void getSexe() {
         SexeRef.addListenerForSingleValueEvent(new ValueEventListener() {

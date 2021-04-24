@@ -33,7 +33,7 @@ public class Skills extends AppCompatActivity implements View.OnClickListener {
 
         BackendIv = findViewById(R.id.BackendIV);
         FrontendIv = findViewById(R.id.FrontendIv);
-        MarketingIV = findViewById(R.id.MarketingIv);
+        MarketingIV = findViewById(R.id.MarketingIV);
         EditingIv = findViewById(R.id.EditingIv);
         AnimationIV = findViewById(R.id.AnimationIV);
         DrawingIv = findViewById(R.id.DrawingIv);

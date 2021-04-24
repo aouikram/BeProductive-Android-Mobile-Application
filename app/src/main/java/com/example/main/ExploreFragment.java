@@ -77,20 +77,11 @@ public class ExploreFragment extends Fragment {
             {
                 final String PostKey = getRef(position).getKey();
                 holder.username.setText(model.getFullname());
+                holder.age.setText(model.getAge() + "" +"years");
 
 
                 Picasso.get().load(model.getProfileimage()).into(holder.profileimage);
 
-               /* holder.itemView.setOnClickListener(new View.OnClickListener()
-                {
-                    @Override
-                    public void onClick(View v)
-                    {
-                        Intent findOthersIntent = new Intent(getActivity(), MainActivity.class);
-                        findOthersIntent.putExtra("PostKey", PostKey);
-                        startActivity(findOthersIntent);
-                    }
-                });*/
 
                 holder.itemView.setOnClickListener(new View.OnClickListener()
                 {
@@ -123,7 +114,7 @@ public class ExploreFragment extends Fragment {
 
     public class FindFriendViewHolder extends RecyclerView.ViewHolder
     {
-        TextView username;
+        TextView username,age;
         CircleImageView profileimage;
         View mView;
 
@@ -131,6 +122,7 @@ public class ExploreFragment extends Fragment {
         {
             super(itemView);
             username = itemView.findViewById(R.id.all_users_profile_full_name);
+            age = itemView.findViewById(R.id.all_users_profile_age);
             profileimage = itemView.findViewById(R.id.all_users_profile_image);
         }
     }

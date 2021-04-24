@@ -196,11 +196,7 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void SendUserToFriendsActivity()
-    {
-        Intent friendsIntent = new Intent(getActivity(), FriendsActivity.class);
-        startActivity(friendsIntent);
-    }
+
 
     private void SendUserToMyPosts()
     {

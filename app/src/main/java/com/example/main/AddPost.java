@@ -73,11 +73,6 @@ public class AddPost extends AppCompatActivity
         PostDescription = (EditText) findViewById(R.id.post_description);
         loadingBar = new ProgressDialog(this);
 
-        //mToolbar = (Toolbar) findViewById(R.id.update_post_page_toolbar);
-      //  setSupportActionBar(mToolbar);
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       // getSupportActionBar().setDisplayShowHomeEnabled(true);
-       // getSupportActionBar().setTitle("What's on your mind ?");
 
         SelectPostImage.setOnClickListener(new View.OnClickListener()
         {

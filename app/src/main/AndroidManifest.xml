@@ -44,6 +44,7 @@
         <activity android:name=".CommentsActivity"/>
         <activity android:name=".FriendsActivity"/>
         <activity android:name=".MyPosts"/>
+        <activity android:name=".EditProfile"/>
         <activity android:name=".ForgotPassword"/>
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>

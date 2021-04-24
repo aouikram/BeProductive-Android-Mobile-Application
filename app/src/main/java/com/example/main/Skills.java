@@ -1,6 +1,7 @@
 package com.example.main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,12 +19,12 @@ public class Skills extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private DatabaseReference usersDb;
     private String currentUId;
-    private ImageView BackendIv,MarketingIV,EditingIv,AnimationIV,CommunicationIv,FrontendIv;
+    private CardView BackendIv,MarketingIV,EditingIv,AnimationIV,DrawingIv,FrontendIv ,MachineLearningIV, WritingIv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.choose_skill);
+        setContentView(R.layout.skills);
 
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
@@ -32,17 +33,21 @@ public class Skills extends AppCompatActivity implements View.OnClickListener {
 
         BackendIv = findViewById(R.id.BackendIV);
         FrontendIv = findViewById(R.id.FrontendIv);
-        MarketingIV = findViewById(R.id.MarketingIV);
+        MarketingIV = findViewById(R.id.MarketingIv);
         EditingIv = findViewById(R.id.EditingIv);
         AnimationIV = findViewById(R.id.AnimationIV);
-        CommunicationIv = findViewById(R.id.CommunicationIv);
+        DrawingIv = findViewById(R.id.DrawingIv);
+        MachineLearningIV = findViewById(R.id.MachineLearningIV);
+        WritingIv = findViewById(R.id.WritingIv);
 
         BackendIv.setOnClickListener(this);
         MarketingIV.setOnClickListener(this);
         EditingIv.setOnClickListener(this);
         AnimationIV.setOnClickListener(this);
-        CommunicationIv.setOnClickListener(this);
+        DrawingIv.setOnClickListener(this);
         FrontendIv.setOnClickListener(this);
+        MachineLearningIV.setOnClickListener(this);
+        WritingIv.setOnClickListener(this);
 
         Log.v("Tag" , "listener for button set");
     }
@@ -77,10 +82,21 @@ public class Skills extends AppCompatActivity implements View.OnClickListener {
                 i= new Intent(this, Match.class);
                 startActivity(i);break;
 
-            case R.id.CommunicationIv :
-                usersDb.child("SkillTable").child(currentUId).child("Type").setValue("communication");
+            case R.id.DrawingIv :
+                usersDb.child("SkillTable").child(currentUId).child("Type").setValue("drawing");
                 i= new Intent(this, Match.class);
                 startActivity(i);break;
+
+            case R.id.MachineLearningIV :
+                usersDb.child("SkillTable").child(currentUId).child("Type").setValue("machingLearning");
+                i= new Intent(this, Match.class);
+                startActivity(i);break;
+
+            case R.id.WritingIv :
+                usersDb.child("SkillTable").child(currentUId).child("Type").setValue("writing");
+                i= new Intent(this, Match.class);
+                startActivity(i);break;
+
             default: break ; }
     }
 }

@@ -7,10 +7,11 @@
     android:layout_height="match_parent"
     android:background="#151C2B"
     >
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="380dp"
         android:src="@drawable/half_circle" />
 
     <androidx.appcompat.widget.Toolbar
@@ -20,7 +21,7 @@
         android:background="#00000000"
         android:minHeight="82dp"
         android:theme="?attr/actionBarTheme"
-        app:title="My Profile" />
+        />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,12 +30,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="35dp"
                 android:layout_marginEnd="35dp"
                 app:cardBackgroundColor="@color/bluedark"
@@ -45,9 +46,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="316dp"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
+                    android:layout_marginTop="30dp"
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
@@ -78,11 +80,11 @@
                         android:drawableStart="@drawable/ic_person_pin_circle_black_24dp"
                         android:gravity="center_horizontal"
                         android:text="Morocco"
-                        android:textColor="#CCCCCC"
+                        android:textColor="#FFFFFF"
                         android:textSize="15sp" />
 
                     <Button
-                        android:id="@+id/button"
+                        android:id="@+id/edit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -98,14 +100,14 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="85dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="20dp"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginEnd="10dp"
                             android:layout_weight="1"
                             android:gravity="center_horizontal"
@@ -115,7 +117,6 @@
                                 android:id="@+id/my_post_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="3658"
                                 android:textColor="@color/white"
                                 android:textSize="17sp" />
 
@@ -129,17 +130,16 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginEnd="10dp"
                             android:layout_weight="1"
                             android:gravity="center_horizontal"
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/my_friends_button"
+                                android:id="@+id/Age"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="7025"
                                 android:textColor="@color/white"
                                 android:textSize="17sp" />
 
@@ -153,16 +153,15 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center_horizontal"
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textView10"
+                                android:id="@+id/Sexe"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="5087"
                                 android:textColor="@color/white"
                                 android:textSize="17sp" />
 
@@ -177,6 +176,18 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FF9800"
+                android:fontFamily="@font/abeezee"
+                android:text="Sign Out"
+                android:textSize="15dp"
+                android:padding="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="130dp" />
 
         </LinearLayout>
     </ScrollView>

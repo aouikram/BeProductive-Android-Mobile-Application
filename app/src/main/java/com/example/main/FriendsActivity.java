@@ -197,9 +197,7 @@ public class FriendsActivity extends AppCompatActivity {
             super(itemView);
 
             mView = itemView;
-            onlineStatusView = (ImageView) itemView.findViewById(R.id.all_user_online_icon);
 
-            friendsDate = itemView.findViewById(R.id.all_users_status);
         }
 
         public void setProfileimage(String profileimage) {

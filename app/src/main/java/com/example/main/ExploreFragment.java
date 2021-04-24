@@ -77,7 +77,7 @@ public class ExploreFragment extends Fragment {
             {
                 final String PostKey = getRef(position).getKey();
                 holder.username.setText(model.getFullname());
-                holder.status.setText(model.getStatus());
+
 
                 Picasso.get().load(model.getProfileimage()).into(holder.profileimage);
 
@@ -123,7 +123,7 @@ public class ExploreFragment extends Fragment {
 
     public class FindFriendViewHolder extends RecyclerView.ViewHolder
     {
-        TextView username, status;
+        TextView username;
         CircleImageView profileimage;
         View mView;
 
@@ -131,7 +131,6 @@ public class ExploreFragment extends Fragment {
         {
             super(itemView);
             username = itemView.findViewById(R.id.all_users_profile_full_name);
-            status = itemView.findViewById(R.id.all_users_status);
             profileimage = itemView.findViewById(R.id.all_users_profile_image);
         }
     }

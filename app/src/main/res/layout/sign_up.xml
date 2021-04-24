@@ -53,16 +53,16 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv"
-                android:layout_width="344dp"
-                android:layout_height="459dp"
-                android:layout_marginTop="160dp"
+                android:layout_width="322dp"
+                android:layout_height="379dp"
                 android:layout_centerInParent="true"
+                android:layout_marginTop="160dp"
                 android:elevation="5dp"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:layout_width="318dp"
-                    android:layout_height="483dp"
+                    android:layout_height="383dp"
                     android:orientation="vertical"
                     android:paddingBottom="50dp">
 
@@ -83,28 +83,12 @@
                         android:layout_marginRight="10dp"
                         android:inputType="textEmailAddress" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Name"
-                        android:textColor="@color/colorPurple"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:inputType="text" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Birthday"
+                        android:text="Age"
                         android:textColor="@color/colorPurple"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -115,19 +99,14 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/birthday"
-                            android:layout_width="213dp"
+                            android:id="@+id/age"
+                            android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:inputType="date" />
+                            android:hint="18"
+                            android:inputType="number" />
 
-                        <ImageView
-                            android:id="@+id/calendar"
-                            android:layout_width="50dp"
-                            android:layout_height="70dp"
-                            android:layout_marginTop="5dp"
-                            android:src="@drawable/ic_calendar_today" />
                     </LinearLayout>
 
                     <TextView
@@ -153,10 +132,10 @@
                         android:orientation="horizontal">
 
                         <com.hbb20.CountryCodePicker
-                            android:layout_marginTop="20dp"
                             android:id="@+id/ccp"
                             android:layout_width="wrap_content"
-                            android:layout_height="82dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
                             app:ccp_autoDetectCountry="true"
                             app:ccp_countryPreference="ma"
                             app:ccp_hintExampleNumberType="FIXED_LINE" />
@@ -164,31 +143,33 @@
                         <EditText
                             android:id="@+id/editText_carrierNumber"
                             android:layout_width="189dp"
-                            android:layout_height="65dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:inputType="phone"
                             android:singleLine="true" />
 
 
-
                     </LinearLayout>
+
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/register_btn"
-                android:layout_width="254dp"
-                android:layout_height="51dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
                 android:layout_alignStart="@+id/cv"
                 android:layout_alignTop="@+id/cv"
                 android:layout_alignEnd="@+id/cv"
                 android:layout_alignBottom="@+id/cv"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="484dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginBottom="-76dp"
-                android:text="Sign up"
+                android:layout_marginStart="113dp"
+                android:layout_marginTop="440dp"
+                android:layout_marginEnd="121dp"
+                android:layout_marginBottom="-109dp"
+                android:text="Next"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 app:backgroundTint="#FF9800" />

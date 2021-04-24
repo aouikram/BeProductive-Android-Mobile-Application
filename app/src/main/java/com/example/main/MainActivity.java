@@ -41,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new GroupFragment()).commit();
         }
+        String edit = getIntent().getStringExtra("edit");
+        if(edit != null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new ProfileFragment()).commit();
+        }
+
        /* String PostKey = getIntent().getStringExtra("PostKey");
         if(PostKey != null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

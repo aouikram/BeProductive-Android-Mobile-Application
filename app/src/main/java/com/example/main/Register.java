@@ -41,7 +41,7 @@ public class Register extends AppCompatActivity {
     private EditText mEmail,mName,mPassword;
     private FirebaseAuth mAuth ;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener ;
-    EditText editTextCarrierNumber;
+    private EditText editTextCarrierNumber , mAge ;
     CountryCodePicker ccp;
     private int day,month,year;
     ImageView calendaricon;
@@ -101,9 +101,9 @@ public class Register extends AppCompatActivity {
         mRegister = (Button) findViewById(R.id.register_btn);
         mEmail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
-        mName = (EditText) findViewById(R.id.name);
-        RegisterBirthday = (EditText)findViewById(R.id.birthday);
-        calendaricon = (ImageView) findViewById(R.id.calendar);
+        mAge= (EditText) findViewById(R.id.age);
+      //  RegisterBirthday = (EditText)findViewById(R.id.birthday);
+     /*   calendaricon = (ImageView) findViewById(R.id.calendar);
         calendaricon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,26 +137,25 @@ public class Register extends AppCompatActivity {
 
                 datePickerDialog.show();
             }
-        });
+        });*/
 
 
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String age = mAge.getText().toString();
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
-                final String name = mName.getText().toString();
-                String birthday = RegisterBirthday.getText().toString();
+
+               // String birthday = RegisterBirthday.getText().toString();
                 String phone = editTextCarrierNumber.getText().toString();
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(Register.this,"email can not be empty" , Toast.LENGTH_SHORT).show();
                 }
-                if (TextUtils.isEmpty(name)) {
-                    mName.setError("Please enter your name");
-                } else if (TextUtils.isEmpty(password)) {
+                else if (TextUtils.isEmpty(password)) {
                    mPassword.setError("Please enter a password");
-                } else if (TextUtils.isEmpty(birthday)) {
-                    RegisterBirthday.setError("Please enter your birthday date");
+                } else if (TextUtils.isEmpty(age)) {
+                    mAge.setError("Please enter your age");
                 } else if (TextUtils.isEmpty(phone)) {
                     editTextCarrierNumber.setError("Please enter your number phone");
                 } else if (!isValidEmail(email)) {
@@ -175,8 +174,8 @@ public class Register extends AppCompatActivity {
                             Map userInfo = new HashMap<>();
 
 
-                            userInfo.put("name", name);
-                            userInfo.put("Birthday", birthday);
+
+                            userInfo.put("age", age);
                             userInfo.put("phone", phone);
                             userInfo.put("email",email);
                             userInfo.put("uid",userId);

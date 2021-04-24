@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,57 +37,67 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RegisterNext extends AppCompatActivity
-{
-    private EditText UserName, FullName, CountryName;
-    private Button SaveInformationbutton;
-    private CircleImageView ProfileImage;
-    private ProgressDialog loadingBar;
-
+public class EditProfile extends AppCompatActivity {
+     CircleImageView edit_profile_pic;
+     EditText edit_username,edit_age,edit_country;
+     RadioButton male , female ;
+     RadioGroup radiogroup ;
     private FirebaseAuth mAuth;
     private DatabaseReference UsersRef;
     private StorageReference UserProfileImageRef;
-
-
-    private RadioButton male , female ;
-    private RadioGroup rg ;
-    String currentUserID;
     final static int Gallery_Pick = 1;
-
+    private ProgressDialog loadingBar;
+    String currentUserID;
+    Button save;
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_next);
-
+        setContentView(R.layout.activity_editprofile);
+        edit_profile_pic = (CircleImageView) findViewById(R.id.edit_profile_pic);
+        edit_username  = (EditText) findViewById(R.id.edit_username);
+        edit_age = (EditText) findViewById(R.id.edit_age);
+        edit_country = (EditText) findViewById(R.id.edit_country);
+        radiogroup = (RadioGroup) findViewById(R.id.radioGroup);
+        male = (RadioButton) findViewById(R.id.male);
+        female = (RadioButton) findViewById(R.id.female);
+        loadingBar = new ProgressDialog(this);
+        save = (Button) findViewById(R.id.save);
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child("AllUsers").child(currentUserID);
         UserProfileImageRef = FirebaseStorage.getInstance().getReference().child("Profile Images");
 
-        UserName = (EditText) findViewById(R.id.setup_username);
-        FullName = (EditText) findViewById(R.id.setup_full_name);
-        CountryName = (EditText) findViewById(R.id.setup_country_name);
-        SaveInformationbutton = (Button) findViewById(R.id.setup_information_button);
-        ProfileImage = (CircleImageView) findViewById(R.id.setup_profile_image);
-        male = (RadioButton) findViewById(R.id.male);
-        female = (RadioButton) findViewById(R.id.female);
-        rg = (RadioGroup) findViewById(R.id.radioGroup);
-
-
-        loadingBar = new ProgressDialog(this);
-
-
-        SaveInformationbutton.setOnClickListener(new View.OnClickListener()
-        {
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                SaveAccountSetupInformation();
+            public void onClick(View v) {
+                save();
             }
         });
+        UsersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
 
-        ProfileImage.setOnClickListener(new View.OnClickListener()
+                    edit_username.setText(snapshot.child("fullname").getValue().toString());
+                    edit_age.setText(snapshot.child("age").getValue().toString());
+                    edit_country.setText(snapshot.child("country").getValue().toString());
+                    String profileImage = snapshot.child("profileimage").getValue().toString();
+                    Picasso.get().load(profileImage).placeholder(R.drawable.profile).into(edit_profile_pic);
+                    String sexe = snapshot.child("sexe").getValue().toString();
+                    if(sexe.equals("Male")){
+                        male.setChecked(true);
+                    }else{
+                        female.setChecked(true);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        edit_profile_pic.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -98,34 +109,56 @@ public class RegisterNext extends AppCompatActivity
             }
         });
 
-        UsersRef.addValueEventListener(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
+    }
+
+    private void save() {
+            String fullname = edit_username.getText().toString();
+            String age = edit_age.getText().toString();
+            String country = edit_country.getText().toString();
+            String sexe ="Male" ;
+            if( male.isChecked()) { sexe = male.getText().toString();}
+            if( female.isChecked()) { sexe = female.getText().toString();}
+            if((TextUtils.isEmpty(fullname))&&(TextUtils.isEmpty(age))&&(TextUtils.isEmpty(country))){
+                Toast.makeText(this, "Check your Info...", Toast.LENGTH_SHORT).show();
+            }
+            else
             {
-                if(dataSnapshot.exists())
+                loadingBar.setTitle("Editing account");
+                loadingBar.setMessage("Please wait, while we edite your Account...");
+                loadingBar.show();
+                loadingBar.setCanceledOnTouchOutside(true);
+
+                HashMap userMap = new HashMap();
+                userMap.put("fullname", fullname);
+                userMap.put("age", age);
+                userMap.put("country", country);
+                userMap.put("sexe", sexe);
+                UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener()
                 {
-                    if(dataSnapshot.hasChild("profileimage"))
+                    @Override
+                    public void onComplete(@NonNull Task task)
                     {
-                        String image = dataSnapshot.child("profileimage").getValue().toString();
-
-                        Picasso.get().load(image).placeholder(R.drawable.profile).into(ProfileImage);
-
+                        if(task.isSuccessful())
+                        {
+                            SendUserToMainActivity();
+                            Toast.makeText(EditProfile.this, "Your Account is Edited Successfully.", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                        }
+                        else
+                        {
+                            String message = task.getException().getMessage();
+                            Toast.makeText(EditProfile.this, "Error Occured: " + message, Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                        }
                     }
-                    else
-                    {
-                        Toast.makeText(RegisterNext.this, "select an image for people to recognize you ", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
+                });
             }
+        }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError)
-            {
-
-            }
-        });
+    private void SendUserToMainActivity() {
+        Intent mainIntent = new Intent(EditProfile.this,MainActivity.class);
+        mainIntent.putExtra("edit","edit");
+        startActivity(mainIntent);
     }
 
     @Override
@@ -177,7 +210,7 @@ public class RegisterNext extends AppCompatActivity
                         if (task.isSuccessful())
                         {
                             Uri downUri = task.getResult();
-                            Toast.makeText(RegisterNext.this, "Profile Image stored successfully to Firebase storage...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditProfile.this, "Profile Image stored successfully to Firebase storage...", Toast.LENGTH_SHORT).show();
 
                             final String downloadUrl = downUri.toString();
                             UsersRef.child("profileimage").setValue(downloadUrl)
@@ -188,16 +221,16 @@ public class RegisterNext extends AppCompatActivity
                                         {
                                             if (task.isSuccessful())
                                             {
-                                                Intent selfIntent = new Intent(RegisterNext.this, RegisterNext.class);
+                                                Intent selfIntent = new Intent(EditProfile.this, EditProfile.class);
                                                 startActivity(selfIntent);
 
-                                                Toast.makeText(RegisterNext.this, "Profile Image stored to Firebase Database Successfully...", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(EditProfile.this, "Profile Image stored to Firebase Database Successfully...", Toast.LENGTH_SHORT).show();
                                                 loadingBar.dismiss();
                                             }
                                             else
                                             {
                                                 String message = task.getException().getMessage();
-                                                Toast.makeText(RegisterNext.this, "Error Occured: " + message, Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(EditProfile.this, "Error Occured: " + message, Toast.LENGTH_SHORT).show();
                                                 loadingBar.dismiss();
                                             }
                                         }
@@ -214,73 +247,4 @@ public class RegisterNext extends AppCompatActivity
             }
         }
     }
-
-    private void SaveAccountSetupInformation()
-    {
-        String username = UserName.getText().toString();
-        String fullname = FullName.getText().toString();
-        String country = CountryName.getText().toString();
-         String sexe ="Male" ;
-         if( male.isChecked()) { sexe = male.getText().toString();}
-         if( female.isChecked()) { sexe = female.getText().toString();}
-             if(TextUtils.isEmpty(username))
-        {
-            Toast.makeText(this, "Please write your user name...", Toast.LENGTH_SHORT).show();
-        }
-
-        if(TextUtils.isEmpty(fullname))
-        {
-            Toast.makeText(this, "Please write your full name...", Toast.LENGTH_SHORT).show();
-        }
-
-        if(TextUtils.isEmpty(country))
-        {
-            Toast.makeText(this, "Please write your country...", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            loadingBar.setTitle("Creating account");
-            loadingBar.setMessage("Please wait, while we create your Account...");
-            loadingBar.show();
-            loadingBar.setCanceledOnTouchOutside(true);
-
-            HashMap userMap = new HashMap();
-            userMap.put("username", username);
-            userMap.put("fullname", fullname);
-            userMap.put("country", country);
-            userMap.put("sexe", sexe);
-            UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener()
-            {
-                @Override
-                public void onComplete(@NonNull Task task)
-                {
-                    if(task.isSuccessful())
-                   {
-                        SendUserToChooseGoalActivity();
-                        Toast.makeText(RegisterNext.this, "Your Account is created Successfully.", Toast.LENGTH_SHORT).show();
-                        loadingBar.dismiss();
-                    }
-                    else
-                    {
-                        String message = task.getException().getMessage();
-                        Toast.makeText(RegisterNext.this, "Error Occured: " + message, Toast.LENGTH_SHORT).show();
-                        loadingBar.dismiss();
-                    }
-                }
-            });
-        }
     }
-
-    private void SendUserToChooseGoalActivity()
-    {
-        Intent mainIntent = new Intent(RegisterNext.this, ChooseGoal.class);
-        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(mainIntent);
-        finish();
-    }
-
-
-
-}
-
-

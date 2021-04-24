@@ -20,7 +20,7 @@ android:background="#151C2B"
     android:background="#00000000"
     android:minHeight="82dp"
     android:theme="?attr/actionBarTheme"
-    app:title="My Profile" />
+    />
 
 <ScrollView
     android:layout_width="match_parent"
@@ -34,7 +34,7 @@ android:background="#151C2B"
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="35dp"
             android:layout_marginEnd="35dp"
             app:cardBackgroundColor="@color/bluedark"
@@ -45,7 +45,7 @@ android:background="#151C2B"
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="305dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:orientation="vertical">
@@ -81,20 +81,6 @@ android:background="#151C2B"
                     android:textColor="#CCCCCC"
                     android:textSize="15sp" />
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/selector_btn_dark"
-                    android:paddingStart="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="Edit Profile"
-                    android:textColor="@color/white"
-                    android:textSize="11sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -103,30 +89,6 @@ android:background="#151C2B"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/my_post_button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="3658"
-                            android:textColor="@color/white"
-                            android:textSize="17sp" />
-
-                        <TextView
-                            android:id="@+id/textView7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Project"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -137,20 +99,14 @@ android:background="#151C2B"
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/my_friends_button"
+                            android:id="@+id/Age"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="7025"
+
                             android:textColor="@color/white"
                             android:textSize="17sp" />
 
-                        <TextView
-                            android:id="@+id/textView9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Follower"
-                            android:textColor="@color/white" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -161,36 +117,20 @@ android:background="#151C2B"
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView10"
+                            android:id="@+id/Sexe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="5087"
+
                             android:textColor="@color/white"
                             android:textSize="17sp" />
 
-                        <TextView
-                            android:id="@+id/textView11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Following"
-                            android:textColor="@color/white" />
+
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        <TextView
-            android:id="@+id/person_sex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Gender"
-            android:layout_below="@+id/person_dob"
-            android:layout_marginTop="2dp"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+
 
 
 

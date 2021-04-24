@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_choose"
+    android:orientation="vertical"
+    tools:context=".Skills">
+    <TextView
+        android:id="@+id/chooseTv"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What skill would you like to work on ?"
+        android:textColor="@color/white"
+        android:textSize="25dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+               android:id="@+id/BackendIV"
+                android:layout_marginTop="3dp"
+
+                android:clickable="true"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                app:cardCornerRadius="25dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Backend"
+                android:textSize="25dp"
+                android:textColor="#d703082b"
+                android:textStyle="bold"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="50dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Coding"
+                    android:textSize="14dp"
+                    android:textColor="#ab03082b"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="80dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/FrontendIv"
+
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                app:cardCornerRadius="25dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Frontend"
+                    android:textSize="25dp"
+                    android:textColor="#d703082b"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="40dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Coding"
+                    android:textSize="14dp"
+                    android:textColor="#ab03082b"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="70dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+
+                android:id="@+id/MarketingIv"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                app:cardCornerRadius="25dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Marketing"
+                    android:textColor="#d703082b"
+                    android:textAlignment="center"
+                    android:layout_marginTop="40dp"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+
+                android:id="@+id/MachineLearningIV"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                app:cardCornerRadius="25dp">
+
+                <TextView
+                    android:id="@+id/MachineLearning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="25dp"
+                    android:text="Machine Learning"
+                    android:textColor="#d703082b"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/EditingIv"
+
+            android:layout_marginTop="3dp"
+            android:clickable="true"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@color/white"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="5dp"
+            app:cardCornerRadius="25dp">
+
+            <TextView
+                android:id="@+id/EditingTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="50dp"
+                android:text="Editing"
+                android:textColor="#d703082b"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/AnimationIV"
+                android:layout_marginTop="20dp"
+
+                android:clickable="true"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/white"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="5dp"
+                app:cardCornerRadius="25dp">
+
+                <TextView
+                    android:id="@+id/AnimationTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="18dp"
+                    android:text="Animation"
+                    android:textColor="#d703082b"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/DrawingIv"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@color/white"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="5dp"
+            app:cardCornerRadius="25dp">
+
+            <TextView
+                android:id="@+id/drawing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="25dp"
+                android:text="Drawing"
+                android:textColor="#d703082b"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+
+                android:id="@+id/WritingIv"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/white"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="5dp"
+                app:cardCornerRadius="25dp">
+
+                <TextView
+                    android:id="@+id/Writing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="25dp"
+                    android:text="Writing"
+                    android:textColor="#d703082b"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+    </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

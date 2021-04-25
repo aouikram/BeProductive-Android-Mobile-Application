@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/bg_choose"
     android:layout_height="match_parent"
-    tools:context=".AddPost"
+    tools:context=".post.AddPost"
     android:orientation="vertical">
 
     <TextView

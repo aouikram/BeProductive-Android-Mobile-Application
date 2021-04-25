@@ -4,19 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
+import com.example.main.chat.ChatFragment;
+import com.example.main.explore.ExploreFragment;
+import com.example.main.post.PostFragment;
+import com.example.main.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -39,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         String data = getIntent().getStringExtra("data");
         if(data != null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new GroupFragment()).commit();
+                    new PostFragment()).commit();
         }
         String edit = getIntent().getStringExtra("edit");
         if(edit != null){
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new ChatFragment();
                             break;
                         case R.id.nav_group:
-                            selectedFragment = new GroupFragment();
+                            selectedFragment = new PostFragment();
                             break;
 
                         case R.id.nav_explore:

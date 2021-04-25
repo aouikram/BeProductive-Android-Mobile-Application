@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="5dp"
     android:background="#F6F5F5"
-    tools:context=".CommentsActivity">
+    tools:context=".post.CommentsActivity">
 
     <TextView
         android:id="@+id/textView"

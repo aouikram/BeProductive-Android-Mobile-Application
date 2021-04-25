@@ -1,25 +1,23 @@
-package com.example.main;
+package com.example.main.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.main.R;
 import com.example.main.adapters.PostAdapter;
+import com.example.main.login.LogSignUp;
 import com.example.main.models.Post;
+import com.example.main.profile.EditProfile;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,8 +39,8 @@ public class ProfileFragment extends Fragment {
     private FirebaseAuth mAuth;
     private TextView MyPosts,Age,Sexe;
     private String currentUserId;
-    private String age , sexe ;
-    private int countFriends = 0, countPosts = 0;
+    private String age , sexe , country ;
+    private int  countPosts = 0;
     private PostAdapter PostAdapter;
     private List<Post> postList;
     private Button signOut,edit;
@@ -86,7 +84,7 @@ public class ProfileFragment extends Fragment {
         postss();
         getAge();
         getSexe();
-
+        getCountry();
 
 
         MyPosts.setOnClickListener(new View.OnClickListener()
@@ -150,8 +148,26 @@ public class ProfileFragment extends Fragment {
    return view;
     }
 
+    private void getCountry() {
+        profileUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    if (dataSnapshot.child("country").getValue() != null){
+                        country = dataSnapshot.child("country").getValue().toString();
+                        userCountry.setText(country);
+
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
     private void SendUserToEditProfileActivity() {
-        Intent intent = new Intent(getActivity(),EditProfile.class);
+        Intent intent = new Intent(getActivity(), EditProfile.class);
         startActivity(intent);
     }
 
@@ -200,7 +216,7 @@ public class ProfileFragment extends Fragment {
 
     private void SendUserToMyPosts()
     {
-        Intent friendsIntent = new Intent(getActivity(), MyPosts.class);
+        Intent friendsIntent = new Intent(getActivity(), com.example.main.post.MyPosts.class);
         startActivity(friendsIntent);
     }
     private void postss(){

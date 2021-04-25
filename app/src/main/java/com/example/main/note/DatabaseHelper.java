@@ -1,4 +1,4 @@
-package com.example.main;
+package com.example.main.note;
 
 import android.content.ContentValues;
 import android.content.Context;

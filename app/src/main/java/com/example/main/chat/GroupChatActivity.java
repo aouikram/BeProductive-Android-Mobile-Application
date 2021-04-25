@@ -1,4 +1,4 @@
-package com.example.main;
+package com.example.main.chat;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,9 +15,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -26,10 +23,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.widget.Toolbar;
 
+import com.example.main.MainActivity;
+import com.example.main.R;
 import com.example.main.adapters.AdapterGroupChat;
 import com.example.main.models.ModelGroupChat;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -85,7 +82,7 @@ Uri image_rui = null ;
        groupId = i.getStringExtra("groupId");
 
        if (groupId==null){
-           Intent intent = new Intent(this , JourneyFragment.class);
+           Intent intent = new Intent(this , MainActivity.class);
            startActivity(i);
        }
        firebaseAuth = FirebaseAuth.getInstance();

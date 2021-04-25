@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4F3F3"
-    tools:context=".GroupChatActivity">
+    tools:context=".chat.GroupChatActivity">
     <LinearLayout
         android:id="@+id/ChatLayout"
         android:layout_width="match_parent"

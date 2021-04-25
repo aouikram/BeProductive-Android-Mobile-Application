@@ -1,4 +1,4 @@
-package com.example.main;
+package com.example.main.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,7 +10,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-    public class WelcomeActivity extends AppCompatActivity {
+import com.example.main.R;
+
+public class WelcomeActivity extends AppCompatActivity {
         Animation animation , animationtext;
         ImageView image;
         TextView logo;
@@ -32,7 +34,7 @@ import android.widget.TextView;
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(WelcomeActivity.this,LogSignUp.class);
+                    Intent intent = new Intent(WelcomeActivity.this, LogSignUp.class);
                     startActivity(intent);
                     finish();
                 }

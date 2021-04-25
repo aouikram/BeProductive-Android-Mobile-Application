@@ -1,4 +1,4 @@
-package com.example.main;
+package com.example.main.chat;
 
 
 import android.content.Intent;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -17,14 +16,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.main.note.DatabaseHelper;
+import com.example.main.R;
 import com.example.main.adapters.NotesAdapter;
+import com.example.main.match.ChooseGoal;
 import com.example.main.models.NotesModel;
+import com.example.main.note.AddNoteActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +33,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ChatFragment extends Fragment implements NotesAdapter.OnRecyclerItemClick{
     private ArrayList<NotesModel> modelList;

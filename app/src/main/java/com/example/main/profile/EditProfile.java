@@ -1,4 +1,4 @@
-package com.example.main;
+package com.example.main.profile;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.main.MainActivity;
+import com.example.main.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -156,7 +158,7 @@ public class EditProfile extends AppCompatActivity {
         }
 
     private void SendUserToMainActivity() {
-        Intent mainIntent = new Intent(EditProfile.this,MainActivity.class);
+        Intent mainIntent = new Intent(EditProfile.this, MainActivity.class);
         mainIntent.putExtra("edit","edit");
         startActivity(mainIntent);
     }

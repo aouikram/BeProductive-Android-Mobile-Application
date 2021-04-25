@@ -1,11 +1,10 @@
-package com.example.main;
+package com.example.main.post;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.main.MainActivity;
+import com.example.main.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -274,7 +275,7 @@ public class AddPost extends AppCompatActivity
 
     private void SendUserToMainActivity()
     {
-        Intent mainIntent = new Intent(AddPost.this,MainActivity.class);
+        Intent mainIntent = new Intent(AddPost.this, MainActivity.class);
         mainIntent.putExtra("data","data");
         startActivity(mainIntent);
     }

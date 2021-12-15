@@ -10,6 +10,9 @@ people you’re working with might be enough of a reminder for some of us to lea
 
 
 
+![choose goal](https://user-images.githubusercontent.com/57714966/146262388-d6968e68-e0ea-4a73-a892-a67ac4b8ed51.PNG)
+
+
 # Built with
 - Java 
 - Android Studio

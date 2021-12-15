@@ -10,12 +10,10 @@ people you’re working with might be enough of a reminder for some of us to lea
 
 ![login](https://user-images.githubusercontent.com/57714966/146262916-6ab057d9-372f-4505-94b2-a61561d00fc4.PNG)  
 ![choose goal](https://user-images.githubusercontent.com/57714966/146262388-d6968e68-e0ea-4a73-a892-a67ac4b8ed51.PNG)  
-
+![health](https://user-images.githubusercontent.com/57714966/146263044-c5be3d35-4b32-4728-9ef5-43b95c41046a.PNG)  
 ![match](https://user-images.githubusercontent.com/57714966/146263242-24ad3963-7f1c-4b8e-b4ed-b17809d2308c.png)  
- 
 ![post](https://user-images.githubusercontent.com/57714966/146263911-3f2d8b8f-f929-4c79-9980-3d16ca37d1a3.PNG)   
 ![chat](https://user-images.githubusercontent.com/57714966/146263374-e59f9c3d-6119-4dc2-8d7c-8f4b8c11a027.PNG)   
-![health](https://user-images.githubusercontent.com/57714966/146263044-c5be3d35-4b32-4728-9ef5-43b95c41046a.PNG)
 ![search](https://user-images.githubusercontent.com/57714966/146264070-3e5186e1-132a-46d2-81b2-2608c995b327.PNG)
 
 
